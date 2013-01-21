@@ -18,11 +18,13 @@ import pelidata.Kentta;
  */
 public class KenttaTest {
     
+    private Kentta miinaKentta;
+    
     public KenttaTest() {
     }
     
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() {        
     }
     
     @AfterClass
@@ -31,6 +33,7 @@ public class KenttaTest {
     
     @Before
     public void setUp() {
+       miinaKentta = new Kentta(10,10);
     }
     
     @After
@@ -41,7 +44,6 @@ public class KenttaTest {
 //    
      @Test
      public void konstruktoriAsettaaKentanKoonOikein() {
-     Kentta miinaKentta = new Kentta(10,10);
      assertEquals("rivi 10 ja sarake 10",miinaKentta.toString());
-     }
+     }  
 }

@@ -33,7 +33,6 @@ public class Kentta {
     public int[][] getMiinaKentta() {
         return miinaKentta;
     }
-
     public void setMiinaKentta(int[][] miinaKentta) {
         this.miinaKentta = miinaKentta;
     }

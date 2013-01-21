@@ -4,4 +4,6 @@ package pelidata;
 public class Miina {
 
     private boolean miina;
+    
+    
 }
