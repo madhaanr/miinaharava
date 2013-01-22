@@ -2,4 +2,4 @@
 17.1.2013 Eka testi ja dokumentit ja kansio rakenteen korjaus. 2.5 tuntia.
 18.1.2013 Kertaustehtävien tekoa. 2 tuntia.
 21.1.2013 Luokkakaaviosta eka luonnos, lisää luokkia ja pari testiä. 2.5 tuntia.
-22.1.2013 Luokkia muokattu. 2 tuntia.
+22.1.2013 Luokkia muokattu ja luokkakaaviota paranneltu+ keskustelua ohjaajien kanssa. 4 tuntia.

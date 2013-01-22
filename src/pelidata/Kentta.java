@@ -10,9 +10,14 @@ public class Kentta {
     
     public Kentta(int kentanKoko) {
     
-        this.kentanKoko=kentanKoko; 
+        if(kentanKoko>3) {
+            this.kentanKoko=kentanKoko; 
+        }
+        else {
+            this.kentanKoko=3;
+        }
         this.miinaKentta=new int[this.kentanKoko][this.kentanKoko];
-}
+    }
 
     public int getRivi() {
         return rivi;
@@ -29,6 +34,15 @@ public class Kentta {
     public void setSarake(int sarake) {
         this.sarake = sarake;
     }
+
+    public int getKentanKoko() {
+        return kentanKoko;
+    }
+
+    public void setKentanKoko(int kentanKoko) {
+        this.kentanKoko = kentanKoko;
+    }
+    
 
     public int[][] getMiinaKentta() {
         return miinaKentta;

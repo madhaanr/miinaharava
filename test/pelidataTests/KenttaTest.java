@@ -46,4 +46,9 @@ public class KenttaTest {
      public void konstruktoriAsettaaKentanKoonOikein() {
      assertEquals("kentanKoko: 10",miinaKentta.toString());
      }  
+     @Test
+     public void konstruktoriEiAsetaLiianPientaKenttaa() {
+     miinaKentta = new Kentta(2);
+     assertEquals("kentanKoko: 3",miinaKentta.toString());
+     }  
 }
