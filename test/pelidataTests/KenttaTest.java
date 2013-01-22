@@ -33,7 +33,7 @@ public class KenttaTest {
     
     @Before
     public void setUp() {
-       miinaKentta = new Kentta(10,10);
+       miinaKentta = new Kentta(10);
     }
     
     @After
@@ -44,6 +44,6 @@ public class KenttaTest {
 //    
      @Test
      public void konstruktoriAsettaaKentanKoonOikein() {
-     assertEquals("rivi 10 ja sarake 10",miinaKentta.toString());
+     assertEquals("kentanKoko: 10",miinaKentta.toString());
      }  
 }

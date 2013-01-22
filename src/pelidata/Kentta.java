@@ -5,13 +5,13 @@ public class Kentta {
 
     private int rivi;
     private int sarake;
+    private int kentanKoko;
     private int[][] miinaKentta;
     
-    public Kentta(int rivi, int sarake) {
+    public Kentta(int kentanKoko) {
     
-        this.rivi=rivi;
-        this.sarake=sarake;   
-        this.miinaKentta=new int[rivi][sarake];
+        this.kentanKoko=kentanKoko; 
+        this.miinaKentta=new int[this.kentanKoko][this.kentanKoko];
 }
 
     public int getRivi() {
@@ -39,7 +39,7 @@ public class Kentta {
 
     @Override
     public String toString() {
-        return "rivi " +rivi +" ja sarake "+sarake;
+        return "kentanKoko: "+kentanKoko;
     }
     
 }

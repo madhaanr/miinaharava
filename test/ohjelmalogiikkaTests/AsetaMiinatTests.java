@@ -55,4 +55,5 @@ public class AsetaMiinatTests {
 //        System.out.println("Testifilen koordit: "+koordinaatit[0]+":"+koordinaatit[1]);
         assertTrue(0 <= koordinaatit[1] && koordinaatit[1]<=asetaMiinat.getKentanKoko());
      }
+     
 }
