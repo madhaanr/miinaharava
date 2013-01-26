@@ -9,18 +9,17 @@ public class Arvonta {
 
     private Random random = new Random();
     private int kentanKoko;
-    private int miinanKoordinaattix;
-    private int miinanKoordinaattiy;
+    private int miinanKoordinaattiX;
+    private int miinanKoordinaattiY;
     
     public Arvonta(int kentanKoko) {
-        this.kentanKoko=kentanKoko;      
+        this.kentanKoko=kentanKoko;  
     }
     
-    public Ruutu[][] miinojenArpoja() {
-        Ruutu[][] ruututaulukko = new Ruutu[kentanKoko][kentanKoko];
-        miinanKoordinaattix = random.nextInt(kentanKoko);
-        miinanKoordinaattiy = random.nextInt(kentanKoko);
-        ruututaulukko[miinanKoordinaattix][miinanKoordinaattiy].setMiina(true);
-        return ruututaulukko; 
+    public Ruutu[][] miinojenArpoja(Ruutu[][] miinaKentta) {
+        miinanKoordinaattiX = random.nextInt(kentanKoko);
+        miinanKoordinaattiY = random.nextInt(kentanKoko);
+        miinaKentta[miinanKoordinaattiX][miinanKoordinaattiY].setMiina(true);
+        return miinaKentta; 
     }
 }

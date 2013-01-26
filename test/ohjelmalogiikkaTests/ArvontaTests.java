@@ -20,8 +20,10 @@ import pelidata.Ruutu;
 public class ArvontaTests {
     
     private Arvonta arvonta;
+    private int kentanKoko=10;
+    private Ruutu[][] arvottuArvo;
     private int min=0;
-    private int max=15;
+    private int max=10;
     
     public ArvontaTests() {
     }
@@ -37,6 +39,7 @@ public class ArvontaTests {
     @Before
     public void setUp() {
         arvonta = new Arvonta(max);
+        arvottuArvo = new Ruutu[kentanKoko][kentanKoko];
     }
     
     @After
@@ -47,7 +50,7 @@ public class ArvontaTests {
     //
      @Test
      public void arvoLukuValillaNollaJaMax() {
-        Ruutu[][] arvottuArvo=arvonta.miinojenArpoja();
+        arvottuArvo=arvonta.miinojenArpoja();
          System.out.println(": "+arvottuArvo);
 //        assertTrue(min <= arvottuArvo && arvottuArvo <=max);
      }

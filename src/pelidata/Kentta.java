@@ -60,13 +60,21 @@ public class Kentta {
     public void luoKentta(int miinojenLukumaara) {
         this.miinojenLukumaara=miinojenLukumaara;
         for(int i=0;i<miinojenLukumaara;++i) {
-            miinaKentta=arvonta.miinojenArpoja();
+            miinaKentta=arvonta.miinojenArpoja(miinaKentta);
+        }
+    }
+    public void tulostaKentta() {
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                System.out.print(miinaKentta[i][j]);
+            }
+            System.out.println("");
         }
     }
 
     @Override
     public String toString() {
-        return ""+miinaKentta;
+        return "kentanKoko: "+getKentanKoko();
     }
     
 }
