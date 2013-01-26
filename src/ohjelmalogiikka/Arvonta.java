@@ -1,7 +1,6 @@
 package ohjelmalogiikka;
 
 import java.util.Random;
-import pelidata.Kentta;
 import pelidata.Ruutu;
 
 /* @author mhaanran */
@@ -17,9 +16,16 @@ public class Arvonta {
     }
     
     public Ruutu[][] miinojenArpoja(Ruutu[][] miinaKentta) {
+        
         miinanKoordinaattiX = random.nextInt(kentanKoko);
         miinanKoordinaattiY = random.nextInt(kentanKoko);
-        miinaKentta[miinanKoordinaattiX][miinanKoordinaattiY].setMiina(true);
+        System.out.println( miinanKoordinaattiX+" : "+miinanKoordinaattiY+" ");
+        if(miinaKentta[miinanKoordinaattiX][miinanKoordinaattiY].isMiina()==true) {
+            miinojenArpoja(miinaKentta);
+        }
+        else {
+            miinaKentta[miinanKoordinaattiX][miinanKoordinaattiY].setMiina(true); 
+        }
         return miinaKentta; 
     }
 }

@@ -48,10 +48,10 @@ public class ArvontaTests {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-     @Test
-     public void arvoLukuValillaNollaJaMax() {
-        arvottuArvo=arvonta.miinojenArpoja();
-         System.out.println(": "+arvottuArvo);
+//     @Test
+//     public void arvoLukuValillaNollaJaMax() {
+//        arvottuArvo=arvonta.miinojenArpoja();
+//         System.out.println(": "+arvottuArvo);
 //        assertTrue(min <= arvottuArvo && arvottuArvo <=max);
-     }
+//     }
 }

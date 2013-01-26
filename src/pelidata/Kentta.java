@@ -12,8 +12,17 @@ public class Kentta {
     private Ruutu[][] miinaKentta;   
     private Arvonta arvonta;
     
-    public Kentta(int kentanKoko, int miinojenLukumaara) {
+//    public Kentta() {
+//
+//        arvonta=new Arvonta(kentanKoko); 
+//        for(int i=0;i<kentanKoko;++i) {
+//            for(int j=0;j<kentanKoko;++j) {
+//                miinaKentta[i][j]=new Ruutu();
+//            }
+//        }
+//    }
     
+    public Kentta(int kentanKoko, int miinojenLukumaara) {
         if(kentanKoko>3) {
             this.kentanKoko=kentanKoko; 
         }
@@ -21,7 +30,13 @@ public class Kentta {
             this.kentanKoko=3;
         }
         this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
-        arvonta=new Arvonta(kentanKoko);  
+        
+        arvonta=new Arvonta(kentanKoko);
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                miinaKentta[i][j]=new Ruutu();
+            }
+        }
     }
     public Kentta(int kentanKoko) {
         if(kentanKoko>3) {
@@ -31,8 +46,14 @@ public class Kentta {
             this.kentanKoko=3;
         }
         this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
+        this.miinojenLukumaara=kentanKoko*5;
+        arvonta=new Arvonta(kentanKoko); 
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                miinaKentta[i][j]=new Ruutu();
+            }
+        }
     }
-
     public int getRivi() {
         return rivi;
     }
@@ -59,6 +80,11 @@ public class Kentta {
     
     public void luoKentta(int miinojenLukumaara) {
         this.miinojenLukumaara=miinojenLukumaara;
+        for(int i=0;i<miinojenLukumaara;++i) {
+            miinaKentta=arvonta.miinojenArpoja(miinaKentta);
+        }
+    }
+    public void luoKentta() {
         for(int i=0;i<miinojenLukumaara;++i) {
             miinaKentta=arvonta.miinojenArpoja(miinaKentta);
         }

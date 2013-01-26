@@ -4,4 +4,4 @@
 21.1.2013 Luokkakaaviosta eka luonnos, lisää luokkia ja pari testiä. 2.5 tuntia.
 22.1.2013 Luokkia muokattu ja luokkakaaviota paranneltu+ keskustelua ohjaajien kanssa. 4 tuntia.
 24.1.2013 Pieni muokkaus ja ohjaus sessio. 2 tuntia.
-26.1.2013 Luokkia poistettu ja luokkia Kentta ja Arvonta muokattu. 2 tuntia. 
+26.1.2013 Luokkia poistettu ja luokkia Kentta ja Arvonta muokattu. 3 tuntia. 

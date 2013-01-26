@@ -35,7 +35,7 @@ public class Ruutu {
     public void setAuki(boolean auki) {
         this.auki = auki;
     }
-    
-    
-    
+    public String toString() {
+        return ""+miina;
+    }
 }
