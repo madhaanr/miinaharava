@@ -1,14 +1,18 @@
 package pelidata;
 
+import ohjelmalogiikka.Arvonta;
+
 /* @author mhaanran */
 public class Kentta {
 
     private int rivi;
     private int sarake;
     private int kentanKoko;
-    private int[][] miinaKentta;
+    private int miinojenLukumaara;
+    private Ruutu[][] miinaKentta;   
+    private Arvonta arvonta;
     
-    public Kentta(int kentanKoko) {
+    public Kentta(int kentanKoko, int miinojenLukumaara) {
     
         if(kentanKoko>3) {
             this.kentanKoko=kentanKoko; 
@@ -16,7 +20,17 @@ public class Kentta {
         else {
             this.kentanKoko=3;
         }
-        this.miinaKentta=new int[this.kentanKoko][this.kentanKoko];
+        this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
+        arvonta=new Arvonta(kentanKoko);  
+    }
+    public Kentta(int kentanKoko) {
+        if(kentanKoko>3) {
+            this.kentanKoko=kentanKoko; 
+        }
+        else {
+            this.kentanKoko=3;
+        }
+        this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
     }
 
     public int getRivi() {
@@ -43,17 +57,16 @@ public class Kentta {
         this.kentanKoko = kentanKoko;
     }
     
-
-    public int[][] getMiinaKentta() {
-        return miinaKentta;
-    }
-    public void setMiinaKentta(int[][] miinaKentta) {
-        this.miinaKentta = miinaKentta;
+    public void luoKentta(int miinojenLukumaara) {
+        this.miinojenLukumaara=miinojenLukumaara;
+        for(int i=0;i<miinojenLukumaara;++i) {
+            miinaKentta=arvonta.miinojenArpoja();
+        }
     }
 
     @Override
     public String toString() {
-        return "kentanKoko: "+kentanKoko;
+        return ""+miinaKentta;
     }
     
 }
