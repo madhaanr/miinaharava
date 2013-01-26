@@ -36,6 +36,6 @@ public class Ruutu {
         this.auki = auki;
     }
     public String toString() {
-        return ""+miina;
+        return ""+auki;
     }
 }

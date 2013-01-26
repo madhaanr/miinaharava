@@ -13,6 +13,15 @@ public class MiinaHarava {
         int kentanKoko=lukija.nextInt();
         Kentta miinaKentta=new Kentta(kentanKoko);
         miinaKentta.luoKentta();
+        int koordinaattiX=0;
+        int koordinaattiY=0;
+        do {
         miinaKentta.tulostaKentta();
+        System.out.println("Anna miinan koordinaatti X:");
+        koordinaattiX = lukija.nextInt();
+        System.out.println("Anna miinan koordinaatti Y:");
+        koordinaattiY = lukija.nextInt();
+//        miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);       
+        } while(miinaKentta.onkoMiina(koordinaattiX, koordinaattiY)==false);
     }
 }

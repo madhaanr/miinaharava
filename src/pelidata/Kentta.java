@@ -46,7 +46,9 @@ public class Kentta {
             this.kentanKoko=3;
         }
         this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
-        this.miinojenLukumaara=kentanKoko*5;
+        
+        this.miinojenLukumaara=kentanKoko;
+        
         arvonta=new Arvonta(kentanKoko); 
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
@@ -89,10 +91,34 @@ public class Kentta {
             miinaKentta=arvonta.miinojenArpoja(miinaKentta);
         }
     }
+    public boolean onkoMiina(int koordinaattiX, int koordinaattiY) {
+        if(miinaKentta[koordinaattiX][koordinaattiY].isMiina()==true) {
+            System.out.println("Osuit miinaan! Peli päättyy");
+            return true;
+        }
+        else {
+            System.out.println("Ei osunut");
+            return false;
+        }
+    }
+//    public void tulostaKentta() {
+//        for(int i=0;i<kentanKoko;++i) {
+//            for(int j=0;j<kentanKoko;++j) {
+//                System.out.print(miinaKentta[i][j]);
+//            }
+//            System.out.println("");
+//        }
+//    }
     public void tulostaKentta() {
-        for(int i=0;i<kentanKoko;++i) {
+         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
-                System.out.print(miinaKentta[i][j]);
+                if(miinaKentta[i][j].isAuki()==false) {
+                    System.out.print(miinaKentta[i][j]);
+                }
+                else {
+                    System.out.print(miinaKentta[i][j]);
+                }
+                
             }
             System.out.println("");
         }
