@@ -42,6 +42,11 @@ public class PeliLogiikka {
             return false;
         }
     }
+    
+    public void miinojaLahella() {
+        
+    }
+    
     //    public void luoKentta() {
 //        for (int i = 0; i < kentta.getMiinojenLukumaara(); ++i) {
 //            kentta.setMiinaKentta(miinaKentta);
