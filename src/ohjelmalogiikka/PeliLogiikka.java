@@ -14,27 +14,6 @@ public class PeliLogiikka {
         kentta.luoKentta();
     }
     
-//    public void luoKentta() {
-//        for (int i = 0; i < kentta.getMiinojenLukumaara(); ++i) {
-//            kentta.setMiinaKentta(miinaKentta);
-//        }
-//    }
-
-//    public void luoKentta(int miinojenLukumaara, Kentta kentta) {
-//        kentta.setMiinojenLukumaara(miinojenLukumaara);
-//        for (int i = 0; i < miinojenLukumaara; ++i) {
-//            kentta.setMiinaKentta() = arvonta.miinojenArpoja(kentta.miinaKentta);
-//        }
-//    }
-
-    //    public void tulostaKentta() {
-    //        for(int i=0;i<kentanKoko;++i) {
-    //            for(int j=0;j<kentanKoko;++j) {
-    //                System.out.print(miinaKentta[i][j]);
-    //            }
-    //            System.out.println("");
-    //        }
-    //    }
     public void tulostaKentta() {
         for (int i = 0; i < kentta.getKentanKoko(); ++i) {
             for (int j = 0; j < kentta.getKentanKoko(); ++j) {
@@ -63,5 +42,26 @@ public class PeliLogiikka {
             return false;
         }
     }
+    //    public void luoKentta() {
+//        for (int i = 0; i < kentta.getMiinojenLukumaara(); ++i) {
+//            kentta.setMiinaKentta(miinaKentta);
+//        }
+//    }
+
+//    public void luoKentta(int miinojenLukumaara, Kentta kentta) {
+//        kentta.setMiinojenLukumaara(miinojenLukumaara);
+//        for (int i = 0; i < miinojenLukumaara; ++i) {
+//            kentta.setMiinaKentta() = arvonta.miinojenArpoja(kentta.miinaKentta);
+//        }
+//    }
+
+    //    public void tulostaKentta() {
+    //        for(int i=0;i<kentanKoko;++i) {
+    //            for(int j=0;j<kentanKoko;++j) {
+    //                System.out.print(miinaKentta[i][j]);
+    //            }
+    //            System.out.println("");
+    //        }
+    //    }
 
 }
