@@ -21,23 +21,6 @@ public class Kentta {
 //            }
 //        }
 //    }
-    
-    public Kentta(int kentanKoko, int miinojenLukumaara) {
-        if(kentanKoko>3) {
-            this.kentanKoko=kentanKoko; 
-        }
-        else {
-            this.kentanKoko=3;
-        }
-        this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
-        
-        arvonta=new Arvonta(kentanKoko);
-        for(int i=0;i<kentanKoko;++i) {
-            for(int j=0;j<kentanKoko;++j) {
-                miinaKentta[i][j]=new Ruutu();
-            }
-        }
-    }
     public Kentta(int kentanKoko) {
         if(kentanKoko>3) {
             this.kentanKoko=kentanKoko; 
@@ -56,6 +39,24 @@ public class Kentta {
             }
         }
     }
+        
+    public Kentta(int kentanKoko, int miinojenLukumaara) {
+        if(kentanKoko>3) {
+            this.kentanKoko=kentanKoko; 
+        }
+        else {
+            this.kentanKoko=3;
+        }
+        this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
+        
+        arvonta=new Arvonta(kentanKoko);
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                miinaKentta[i][j]=new Ruutu();
+            }
+        }
+    }
+
     public int getRivi() {
         return rivi;
     }
@@ -79,51 +80,36 @@ public class Kentta {
     public void setKentanKoko(int kentanKoko) {
         this.kentanKoko = kentanKoko;
     }
-    
-    public void luoKentta(int miinojenLukumaara) {
-        this.miinojenLukumaara=miinojenLukumaara;
-        for(int i=0;i<miinojenLukumaara;++i) {
-            miinaKentta=arvonta.miinojenArpoja(miinaKentta);
-        }
+
+    public int getMiinojenLukumaara() {
+        return miinojenLukumaara;
+    }
+
+    public void setMiinojenLukumaara(int miinojenLukumaara) {
+        this.miinojenLukumaara = miinojenLukumaara;
+    }
+
+    public Ruutu[][] getMiinaKentta() {
+        return miinaKentta;
+    }
+
+    public void setMiinaKentta(Ruutu[][] miinaKentta) {
+        this.miinaKentta = miinaKentta;
+    }
+
+    public Arvonta getArvonta() {
+        return arvonta;
+    }
+
+    public void setArvonta(Arvonta arvonta) {
+        this.arvonta = arvonta;
     }
     public void luoKentta() {
         for(int i=0;i<miinojenLukumaara;++i) {
             miinaKentta=arvonta.miinojenArpoja(miinaKentta);
         }
     }
-    public boolean onkoMiina(int koordinaattiX, int koordinaattiY) {
-        if(miinaKentta[koordinaattiX][koordinaattiY].isMiina()==true) {
-            System.out.println("Osuit miinaan! Peli päättyy");
-            return true;
-        }
-        else {
-            System.out.println("Ei osunut");
-            return false;
-        }
-    }
-//    public void tulostaKentta() {
-//        for(int i=0;i<kentanKoko;++i) {
-//            for(int j=0;j<kentanKoko;++j) {
-//                System.out.print(miinaKentta[i][j]);
-//            }
-//            System.out.println("");
-//        }
-//    }
-    public void tulostaKentta() {
-         for(int i=0;i<kentanKoko;++i) {
-            for(int j=0;j<kentanKoko;++j) {
-                if(miinaKentta[i][j].isAuki()==false) {
-                    System.out.print(miinaKentta[i][j]);
-                }
-                else {
-                    System.out.print(miinaKentta[i][j]);
-                }
-                
-            }
-            System.out.println("");
-        }
-    }
-
+    
     @Override
     public String toString() {
         return "kentanKoko: "+getKentanKoko();

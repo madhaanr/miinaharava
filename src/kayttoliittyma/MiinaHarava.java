@@ -1,7 +1,7 @@
 package kayttoliittyma;
 
 import java.util.Scanner;
-import pelidata.Kentta;
+import ohjelmalogiikka.PeliLogiikka;
 
 /* @author mhaanran */
 public class MiinaHarava {
@@ -11,17 +11,19 @@ public class MiinaHarava {
         System.out.println("Tervetuloa miinaharava peliin!");
         System.out.print("Kuinka suuren miinakentän haluat?: ");
         int kentanKoko=lukija.nextInt();
-        Kentta miinaKentta=new Kentta(kentanKoko);
-        miinaKentta.luoKentta();
-        int koordinaattiX=0;
-        int koordinaattiY=0;
+        PeliLogiikka miinaKentta=new PeliLogiikka(kentanKoko);
+        
+        int koordinaattiX;
+        int koordinaattiY;
         do {
             miinaKentta.tulostaKentta();
-            System.out.println("Anna miinan koordinaatti X:");
+            System.out.print("Anna miinan koordinaatti X: ");
             koordinaattiX = lukija.nextInt();
-            System.out.println("Anna miinan koordinaatti Y:");
+            System.out.print("Anna miinan koordinaatti Y: ");
             koordinaattiY = lukija.nextInt();
 //        miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);       
-        } while(miinaKentta.onkoMiina(koordinaattiX, koordinaattiY)==false);
+        } while (miinaKentta.onkoMiina(koordinaattiX, koordinaattiY)==false);
+        miinaKentta.tulostaKentta();
+        System.out.println("Lopputilanne!");
     }
 }

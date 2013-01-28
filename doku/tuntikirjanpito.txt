@@ -5,3 +5,4 @@
 22.1.2013 Luokkia muokattu ja luokkakaaviota paranneltu+ keskustelua ohjaajien kanssa. 4 tuntia.
 24.1.2013 Pieni muokkaus ja ohjaus sessio. 2 tuntia.
 26.1.2013 Luokkia poistettu ja luokkia Kentta ja Arvonta muokattu. Peli toimii suppeasti tekstikäyttöliittymän kautta. 4 tuntia. 
+28.1.2013 Toiminnallisuutta lisätty. Koodia refactoroitu. 2 tuntia.

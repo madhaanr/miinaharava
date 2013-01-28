@@ -47,7 +47,7 @@ public class KenttaTest {
     @Test
     public void konstruktoriAsettaaKentanKoonOikein() {
         assertEquals("kentanKoko: 10", miinaKentta.toString());
-        miinaKentta.luoKentta(miinojenLukumaara);
+        miinaKentta.luoKentta(miinojenLukumaara, this);
         miinaKentta.tulostaKentta();
     }
 
