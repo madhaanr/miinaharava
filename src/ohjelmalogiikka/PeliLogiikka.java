@@ -47,13 +47,13 @@ public class PeliLogiikka {
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
                 if(kentta.getMiinaKentta()[i][j].isMiina()) {
-                    if(i-1>0&&j-1>0) {
+                    if(i-1>=0&&j-1>=0) {
                         kentta.getMiinaKentta()[i-1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
                     }
-                    if(i-1>0) {
+                    if(i-1>=0) {
                         kentta.getMiinaKentta()[i-1][j].setNaapuriRuutujenMiinojenLukumaara(1);
                     }
-                    if(i-1>0&&j+1<kentanKoko) {
+                    if(i-1>=0&&j+1<kentanKoko) {
                         kentta.getMiinaKentta()[i-1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
                     }
                     if(j-1>=0) {
@@ -62,7 +62,7 @@ public class PeliLogiikka {
                     if(j+1<kentanKoko) {
                         kentta.getMiinaKentta()[i][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
                     }
-                    if(i+1<kentanKoko&&j-1>0) {
+                    if(i+1<kentanKoko&&j-1>=0) {
                         kentta.getMiinaKentta()[i+1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
                     }
                     if(i+1<kentanKoko) {

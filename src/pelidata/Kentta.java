@@ -28,7 +28,7 @@ public class Kentta {
         }
         this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
         
-        this.miinojenLukumaara=(kentanKoko*kentanKoko)/3;
+        this.miinojenLukumaara=(kentanKoko*kentanKoko)/5;
         
         arvonta=new Arvonta(kentanKoko); 
         for(int i=0;i<kentanKoko;++i) {
