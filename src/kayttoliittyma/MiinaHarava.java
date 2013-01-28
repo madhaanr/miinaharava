@@ -12,7 +12,7 @@ public class MiinaHarava {
         System.out.print("Kuinka suuren miinakentän haluat?: ");
         int kentanKoko=lukija.nextInt();
         PeliLogiikka miinaKentta=new PeliLogiikka(kentanKoko);
-        
+        miinaKentta.miinojaLahella();
         int koordinaattiX;
         int koordinaattiY;
         do {
@@ -21,7 +21,7 @@ public class MiinaHarava {
             koordinaattiX = lukija.nextInt();
             System.out.print("Anna miinan koordinaatti Y: ");
             koordinaattiY = lukija.nextInt();
-//        miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);       
+            
         } while (miinaKentta.onkoMiina(koordinaattiX, koordinaattiY)==false);
         miinaKentta.tulostaKentta();
         System.out.println("Lopputilanne!");

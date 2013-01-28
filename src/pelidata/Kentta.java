@@ -5,8 +5,6 @@ import ohjelmalogiikka.Arvonta;
 /* @author mhaanran */
 public class Kentta {
 
-    private int rivi;
-    private int sarake;
     private int kentanKoko;
     private int miinojenLukumaara;
     private Ruutu[][] miinaKentta;   
@@ -55,22 +53,6 @@ public class Kentta {
                 miinaKentta[i][j]=new Ruutu();
             }
         }
-    }
-
-    public int getRivi() {
-        return rivi;
-    }
-
-    public void setRivi(int rivi) {
-        this.rivi = rivi;
-    }
-
-    public int getSarake() {
-        return sarake;
-    }
-
-    public void setSarake(int sarake) {
-        this.sarake = sarake;
     }
 
     public int getKentanKoko() {

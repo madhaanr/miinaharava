@@ -3,8 +3,9 @@ package pelidata;
 /* @author mhaanran */
 public class Ruutu {
     private boolean miina;
-    private int naapuriRuutujenMiinojenLukumaara;
     private boolean auki;
+    private int naapuriRuutujenMiinojenLukumaara;
+   
 
     public Ruutu() {
         this.miina=false;
@@ -25,7 +26,7 @@ public class Ruutu {
     }
 
     public void setNaapuriRuutujenMiinojenLukumaara(int naapuriRuutujenMiinojenLukumaara) {
-        this.naapuriRuutujenMiinojenLukumaara = naapuriRuutujenMiinojenLukumaara;
+        this.naapuriRuutujenMiinojenLukumaara += naapuriRuutujenMiinojenLukumaara;
     }
 
     public boolean isAuki() {
@@ -36,6 +37,6 @@ public class Ruutu {
         this.auki = auki;
     }
     public String toString() {
-        return ""+auki;
+        return ""+naapuriRuutujenMiinojenLukumaara;
     }
 }
