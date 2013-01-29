@@ -53,6 +53,6 @@ public class ArvontaTests {
     //
      @Test
      public void arvoLukuValillaNollaJaMax() {
-        
+         assertTrue(min<=arvonta.&&arvonta<=max);
      }
 }

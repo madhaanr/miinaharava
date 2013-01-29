@@ -4,6 +4,7 @@
  */
 package ohjelmalogiikkaTests;
 
+import ohjelmalogiikka.PeliLogiikka;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,7 +18,10 @@ import static org.junit.Assert.*;
  */
 public class PeliLogiikkaTests {
     
+    private PeliLogiikka peliLogiikka;
+    
     public PeliLogiikkaTests() {
+        
     }
     
     @BeforeClass
@@ -38,6 +42,9 @@ public class PeliLogiikkaTests {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    // @Test
-    // public void hello() {}
+     @Test
+     public void konstruktoriLuoPeliKentanJonkaKokoOn10() {
+         peliLogiikka = new PeliLogiikka(10);
+         assertEquals(10, peliLogiikka.getKentanKoko());
+     }
 }

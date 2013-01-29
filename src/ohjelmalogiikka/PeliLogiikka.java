@@ -13,6 +13,14 @@ public class PeliLogiikka {
         kentta = new Kentta(this.kentanKoko);
         kentta.luoKentta();
     }
+
+    public Kentta getKentta() {
+        return kentta;
+    }
+
+    public int getKentanKoko() {
+        return kentanKoko;
+    }
     
     public void tulostaKentta() {
         for (int i = 0; i < kentta.getKentanKoko(); ++i) {
@@ -38,7 +46,8 @@ public class PeliLogiikka {
             return true;
         } else {
             System.out.println("Ei osunut");
-            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+//            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+            josOsuiNollaanAvaaPelikenttaa(koordinaattiX,koordinaattiY);
             return false;
         }
     }
@@ -47,6 +56,7 @@ public class PeliLogiikka {
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
                 if(kentta.getMiinaKentta()[i][j].isMiina()) {
+                    kentta.getMiinaKentta()[i][j].setNaapuriRuutujenMiinojenLukumaara(9);
                     if(i-1>=0&&j-1>=0) {
                         kentta.getMiinaKentta()[i-1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
                     }
@@ -72,6 +82,18 @@ public class PeliLogiikka {
                         kentta.getMiinaKentta()[i+1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
                     }
                 }
+            }
+        }
+    }
+    public void josOsuiNollaanAvaaPelikenttaa(int koordinaattiX, int koordinaattiY) {
+        if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()==0) {
+            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+        }
+        else {
+            if(koordinaattiX+1>=0&&koordinaattiY+1>=0&&koordinaattiX+1<kentanKoko&&
+              koordinaattiY+1<kentanKoko) {
+                josOsuiNollaanAvaaPelikenttaa(koordinaattiX, koordinaattiY); 
+                kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
             }
         }
     }

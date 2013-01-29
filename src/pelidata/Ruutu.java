@@ -37,11 +37,14 @@ public class Ruutu {
         this.auki = auki;
     }
     public String toString() {
-        if(isMiina()==false) {
-            return ""+naapuriRuutujenMiinojenLukumaara;
-        }
-        else {
-            return ""+9;
-        }
+        return ""+isAuki();
     }
+//    public String toString() {
+//        if(isMiina()==false) {
+//            return ""+naapuriRuutujenMiinojenLukumaara;
+//        }
+//        else {
+//            return ""+9;
+//        }
+//    }
 }
