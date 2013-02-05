@@ -4,7 +4,8 @@ import ohjelmalogiikka.Arvonta;
 
 /* @author mhaanran */
 /**
- * Kentta luokka luo pelikentan ja käyttä Arvonta luokkaa.
+ * Kentta luokka luo pelikentan ja käyttää Arvonta luokkaa miinojen arpomiseen 
+ * kentälle.
  * 
  */
 public class Kentta {
@@ -90,6 +91,9 @@ public class Kentta {
     public void setArvonta(Arvonta arvonta) {
         this.arvonta = arvonta;
     }
+/**
+ * Luodaan miinakentta ja arvotaan siihen haluttu määrä miinoja.
+ */
     public void luoKentta() {
         for(int i=0;i<miinojenLukumaara;++i) {
             miinaKentta=arvonta.miinojenArpoja(miinaKentta);

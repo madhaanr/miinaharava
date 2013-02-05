@@ -18,7 +18,13 @@ public class Arvonta {
     public Arvonta(int kentanKoko) {
         this.kentanKoko=kentanKoko;  
     }
-    
+/**
+ * Metodi arpoo miinan paikan. Jos paikassa on jo miina arvotaan uusi paikka.
+ * @param miinanKoordinaattiX vaakakoordinaatti
+ * @param miinanKoordinaattiY pystykoordinaatti
+ * @param miinaKentta miinaKentta
+ * @return palautetaan Ruutu[][]
+ */
     public Ruutu[][] miinojenArpoja(Ruutu[][] miinaKentta) {
         
         miinanKoordinaattiX = random.nextInt(kentanKoko);

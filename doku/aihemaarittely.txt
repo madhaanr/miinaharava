@@ -1,10 +1,12 @@
-﻿Ohjelmistoprojektin aihemäärittely
+Ohjelmistoprojektin aihemäärittely
 
-Aiheena on peli nimeltä miina harava.
+Aiheena on peli nimeltä miinaharava.
 
-Käyttäjät: pelaaja
-
+Käyttäjät: yksi pelaaja
 
 Pelinkulku
 
-Pelin alussa peli arpoo tietyn määrän miinoja peli kentälle ja näyttää pelikentän tiileinä joita pelaaja klikkailee ja jokaisen klikkauksen jälkeen peli tarkastaa osuttiinko miinaan vai ei. Peli myös ilmoittaa numeroilla jos viereisissä tiileissä on miinoja.
+Pelin alussa peli arpoo tietyn määrän miinoja peli kentälle ja näyttää 
+pelikentän ruutuina, joita pelaaja klikkailee ja jokaisen klikkauksen jälkeen 
+peli tarkastaa osuttiinko miinaan vai ei. Peli myös ilmoittaa numeroilla 
+kuinka monta miinaa viereisissä ruuduissa on.
