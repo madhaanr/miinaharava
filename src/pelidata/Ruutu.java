@@ -1,6 +1,10 @@
 package pelidata;
 
 /* @author mhaanran */
+/**
+ * Ruutu luokka kertoo mikä on ruudun tila.
+ * 
+ */
 public class Ruutu {
     private boolean miina;
     private boolean auki;

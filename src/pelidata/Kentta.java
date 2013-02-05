@@ -3,6 +3,10 @@ package pelidata;
 import ohjelmalogiikka.Arvonta;
 
 /* @author mhaanran */
+/**
+ * Kentta luokka luo pelikentan ja käyttä Arvonta luokkaa.
+ * 
+ */
 public class Kentta {
 
     private int kentanKoko;

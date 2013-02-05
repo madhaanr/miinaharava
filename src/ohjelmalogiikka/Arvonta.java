@@ -4,6 +4,10 @@ import java.util.Random;
 import pelidata.Ruutu;
 
 /* @author mhaanran */
+/**
+ * Arvonta luokassa on metodi miinojen arpomiseen pelikentälle.
+ * 
+ */
 public class Arvonta {
 
     private Random random = new Random();

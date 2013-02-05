@@ -4,6 +4,10 @@ import java.util.Scanner;
 import ohjelmalogiikka.PeliLogiikka;
 
 /* @author mhaanran */
+/**
+ * Miinaharava luokka toteuttaa tekstikäyttöliittymän miinaharavan pelaamiseen.
+ * 
+ */
 public class MiinaHarava {
     private static Scanner lukija = new Scanner(System.in);
     
