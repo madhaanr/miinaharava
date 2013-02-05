@@ -26,9 +26,8 @@ public class PeliLogiikka {
         return kentanKoko;
     }
 /**
- * 
- */
-    
+ * Metodi tulostaa miinakentan.
+ */    
     public void tulostaKentta() {
         for (int i = 0; i < kentta.getKentanKoko(); ++i) {
             for (int j = 0; j < kentta.getKentanKoko(); ++j) {
@@ -43,11 +42,7 @@ public class PeliLogiikka {
     }
 /**
  * Metodi onkoMiina tarkistaa onko pelaajan valitsemissa koordinaateissa sijaitse-
- * vassa peliruudussa miina. Ensin tutkitaan oliko ruutu jo auki, jos oli niin,
- * huomautetaan siitä käyttäjälle. Jos ruudussa on miina niin sitten seuraava
- * if lause huomaa tämän lopettaa pelin. Jos ruutu ei ole auki ja siinä ei ole miinaa
- * niin sitten kutsutaan metodia joka tarkistaa osuiko ruutuun olevien miinojen lukumäärä 
- * parametri on nolla.
+ * vassa peliruudussa miina.
  * @param koordinaattiX Ruudun x koordinaatti eli vaakasuunnan koordinaatti.
  * @param koordinaattiY Ruudun y koordinaatti eli pystysuunnan koordinaatti.
  * @return Palauttaa false jos ruudussa ei ole miinaa ja true jos ruudussa on miina.
@@ -69,8 +64,8 @@ public class PeliLogiikka {
         }
     }
 /**
- * Metodi miinojaLahella käy läpi pelikentän joka ruudun ja jos jossain ruudussa on
- * niin sen ruudun miinojalahella arvoksi asetetaan 9. ja 
+ * Metodi miinojaLahella käy läpi pelikentän joka ruudun ja jos jossain 
+ * ruudussa on miina niin sen ruudun miinojalahella arvoksi asetetaan 9. ja 
  * naapuri ruutujen miinojalahella muuttujaa kasvatetaan yhdellä.
  */
     public void miinojaLahella() {
@@ -106,13 +101,34 @@ public class PeliLogiikka {
             }
         }
     }
+/**
+ * Metodi avaa lisää pelikenttää näkyville jos metodi getNaapuriRuutujenMiinojenLukumaara 
+ * palauttaa arvon 0.
+ * @param koordinaattiX vaakakoordinaatti.
+ * @param koordinaattiY pystykoordinaatti.
+ */
     public void josOsuiNollaanAvaaPelikenttaa(int koordinaattiX, int koordinaattiY) {
-        if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()==0) {
-            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+        if(koordinaattiX<0 || koordinaattiY<0 || koordinaattiX>kentanKoko || koordinaattiY>kentanKoko) {
+            return;
         }
-        if(kentta.getMiinaKentta()[koordinaattiX+1][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()==0) {
-            kentta.getMiinaKentta()[koordinaattiX+1][koordinaattiY].setAuki(true);
+        if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()!=0) {
+            return;
         }
+        if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki()) {
+            return;
+        } 
+        kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+        josOsuiNollaanAvaaPelikenttaa(koordinaattiX-1, koordinaattiY);
+        josOsuiNollaanAvaaPelikenttaa(koordinaattiX+1, koordinaattiY);
+        josOsuiNollaanAvaaPelikenttaa(koordinaattiX, koordinaattiY-1);
+        josOsuiNollaanAvaaPelikenttaa(koordinaattiX, koordinaattiY+1);
+         
+            
+//        for(int i=koordinaattiX-1;i<koordinaattiX+1;++i) {
+//            for(int j=koordinaattiY-1;j<koordinaattiY+1;++j) {
+//                josOsuiNollaanAvaaPelikenttaa(koordinaattiX+i, koordinaattiY+j);
+//            }
+//        }
     }
     
     //    public void luoKentta() {
