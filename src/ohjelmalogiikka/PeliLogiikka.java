@@ -58,7 +58,6 @@ public class PeliLogiikka {
             return true;
         } else {
             System.out.println("Ei osunut");
-//            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
             josOsuiNollaanAvaaPelikenttaa(koordinaattiX,koordinaattiY);
             return false;
         }
@@ -108,9 +107,10 @@ public class PeliLogiikka {
  * @param koordinaattiY pystykoordinaatti.
  */
     public void josOsuiNollaanAvaaPelikenttaa(int koordinaattiX, int koordinaattiY) {
-        if(koordinaattiX<0 || koordinaattiY<0 || koordinaattiX>kentanKoko || koordinaattiY>kentanKoko) {
+        if(koordinaattiX<0 || koordinaattiY<0 || koordinaattiX>=kentanKoko || koordinaattiY>=kentanKoko) {
             return;
         }
+        System.out.println(koordinaattiX+" : "+koordinaattiY);
         if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()!=0) {
             return;
         }
@@ -122,13 +122,6 @@ public class PeliLogiikka {
         josOsuiNollaanAvaaPelikenttaa(koordinaattiX+1, koordinaattiY);
         josOsuiNollaanAvaaPelikenttaa(koordinaattiX, koordinaattiY-1);
         josOsuiNollaanAvaaPelikenttaa(koordinaattiX, koordinaattiY+1);
-         
-            
-//        for(int i=koordinaattiX-1;i<koordinaattiX+1;++i) {
-//            for(int j=koordinaattiY-1;j<koordinaattiY+1;++j) {
-//                josOsuiNollaanAvaaPelikenttaa(koordinaattiX+i, koordinaattiY+j);
-//            }
-//        }
     }
     
     //    public void luoKentta() {
