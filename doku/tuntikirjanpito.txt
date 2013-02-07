@@ -8,3 +8,4 @@
 28.1.2013 Toiminnallisuutta lisätty. Koodia refactoroitu. 3.5 tuntia.
 29.1.2013 Testejä lisätty. 3 tuntia.
 5.2.2013 Javadoc aloitettu. Aihemäärittelyä täsmennetty. Pelilogiikka lisätty. 4 tuntia.
+7.2.2013 TekstiKäyttöLiittymä luokka lisätty. Ja muita pieniä muutoksia. 1 tunti.
