@@ -64,14 +64,24 @@ public class PeliLogiikka {
     }
 /**
  * Metodi miinojaLahella käy läpi pelikentän joka ruudun ja jos jossain 
- * ruudussa on miina niin sen ruudun miinojalahella arvoksi asetetaan 9. ja 
- * naapuri ruutujen miinojalahella muuttujaa kasvatetaan yhdellä.
+ * ruudussa on miina niin sen ruudun miinojalahella arvoksi asetetaan 9. 
+ * ja naapuri ruutujen miinojalahella muuttujaa kasvatetaan yhdellä.
  */
     public void miinojaLahella() {
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
                 if(kentta.getMiinaKentta()[i][j].isMiina()) {
                     kentta.getMiinaKentta()[i][j].setNaapuriRuutujenMiinojenLukumaara(9);
+//                    if(tarkistaRajat(i, j)) {
+//                        kentta.getMiinaKentta()[i-1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i-1][j].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i-1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i+1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i+1][j].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i+1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                    }
                     if(i-1>=0&&j-1>=0) {
                         kentta.getMiinaKentta()[i-1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
                     }
@@ -100,6 +110,13 @@ public class PeliLogiikka {
             }
         }
     }
+    public boolean tarkistaRajat(int i, int j) {
+        if(i-1<0 || j-1<0 || i+1>=kentanKoko || j+1>=kentanKoko) {
+            return false;
+        }
+        return true;
+    }
+    
 /**
  * Metodi avaa lisää pelikenttää näkyville jos metodi getNaapuriRuutujenMiinojenLukumaara 
  * palauttaa arvon 0.
