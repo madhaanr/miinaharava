@@ -20,12 +20,9 @@ import pelidata.Ruutu;
  */
 public class ArvontaTests {
     
+    private int kentanKoko;  
+    private Ruutu[][] miinaKentta;   
     private Arvonta arvonta;
-    private int kentanKoko=10;
-    private Ruutu[][] arvottuArvo;
-    private int min=0;
-    private int max=10;
-    private Kentta kentta;
     
     public ArvontaTests() {
     }
@@ -40,9 +37,14 @@ public class ArvontaTests {
     
     @Before
     public void setUp() {
-        arvonta = new Arvonta(max);
-        arvottuArvo = new Ruutu[kentanKoko][kentanKoko];
-        kentta = new Kentta(kentanKoko);
+        kentanKoko=5;
+        arvonta = new Arvonta(kentanKoko);
+        miinaKentta = new Ruutu[kentanKoko][kentanKoko];
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                miinaKentta[i][j]=new Ruutu();
+            }
+        }
     }
     
     @After
@@ -52,7 +54,16 @@ public class ArvontaTests {
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
-     public void arvoLukuValillaNollaJaMax() {
-         
+     public void miinaKenttallaOnYlarajaKoko() {  
+         assertNotNull(miinaKentta[4][4]);
+     }
+     @Test
+     public void miinaKenttallaOnAlaRajaKoko() {  
+         assertNotNull(miinaKentta[0][0]);
+     }
+     @Test
+     public void miinojenArpominen() {
+         miinaKentta=arvonta.miinojenArpoja(miinaKentta);
+         assertNotNull(miinaKentta);
      }
 }

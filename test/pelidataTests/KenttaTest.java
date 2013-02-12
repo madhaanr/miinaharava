@@ -19,7 +19,6 @@ import pelidata.Kentta;
 public class KenttaTest {
 
     private Kentta miinaKentta;
-    private int miinojenLukumaara = 10;
 
     public KenttaTest() {
     }
@@ -34,7 +33,7 @@ public class KenttaTest {
 
     @Before
     public void setUp() {
-        miinaKentta = new Kentta(10);
+        
     }
 
     @After
@@ -46,6 +45,7 @@ public class KenttaTest {
 
     @Test
     public void konstruktoriAsettaaKentanKoonOikein() {
+        miinaKentta = new Kentta(10);
         assertEquals("kentanKoko: 10", miinaKentta.toString());
     }
 

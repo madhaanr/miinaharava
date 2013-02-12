@@ -23,13 +23,13 @@ public class Arvonta {
  * @param miinanKoordinaattiX vaakakoordinaatti
  * @param miinanKoordinaattiY pystykoordinaatti
  * @param miinaKentta miinaKentta
- * @return palautetaan Ruutu[][]
+ * @return palautetaan Ruutu[][] tyyppinen miinaKentta
  */
     public Ruutu[][] miinojenArpoja(Ruutu[][] miinaKentta) {
         
         miinanKoordinaattiX = random.nextInt(kentanKoko);
         miinanKoordinaattiY = random.nextInt(kentanKoko);
-        System.out.println( miinanKoordinaattiX+" : "+miinanKoordinaattiY+" ");
+//        System.out.println( miinanKoordinaattiX+" : "+miinanKoordinaattiY+" ");
         if(miinaKentta[miinanKoordinaattiX][miinanKoordinaattiY].isMiina()==true) {
             miinojenArpoja(miinaKentta);
         }

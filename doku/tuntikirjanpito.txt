@@ -9,4 +9,5 @@
 29.1.2013 Testejä lisätty. 3 tuntia.
 05.2.2013 Javadoc aloitettu. Aihemäärittelyä täsmennetty. Pelilogiikka lisätty. 4 tuntia.
 07.2.2013 TekstiKäyttöLiittymä luokka lisätty. Ja muita pieniä muutoksia. 1 tunti.
-10.2.2013 Sekvenssikaavioita lisätty. 2 tuntia.
+10.2.2013 Sekvenssikaavioita lisätty. 1.5 tuntia.
+12.2.2013 Testejä lisätty.
