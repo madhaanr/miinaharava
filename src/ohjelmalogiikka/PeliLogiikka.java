@@ -31,11 +31,11 @@ public class PeliLogiikka {
     public void tulostaKentta() {
         for (int i = 0; i < kentta.getKentanKoko(); ++i) {
             for (int j = 0; j < kentta.getKentanKoko(); ++j) {
-                if (kentta.getMiinaKentta()[i][j].isAuki() == false) {
+//                if (kentta.getMiinaKentta()[i][j].isAuki() == false) {
                     System.out.print(kentta.getMiinaKentta()[i][j]);
-                } else {
-                    System.out.print(kentta.getMiinaKentta()[i][j]);
-                }
+//                } else {
+//                    System.out.print(kentta.getMiinaKentta()[i][j]);
+//                }
             }
             System.out.println("");
         }

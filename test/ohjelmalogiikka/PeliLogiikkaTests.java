@@ -25,18 +25,18 @@ public class PeliLogiikkaTests {
     public void setUp() {
         miinaKentta = new PeliLogiikka(kentanKoko);
     }
-      
+       
     @Test
-    public void miinojaLahellaTest() {
+    public void miinojaLahella() {
         miinaKentta.miinojaLahella();
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
-                    //tbd 
+                assertNotNull(miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());        
             }
         }
     }
     @Test
-    public void onkoMiinaTest() {
+    public void onkoMiinaJossainRuudussa() {
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
                 if(miinaKentta.onkoMiina(i, j)) {
@@ -45,6 +45,20 @@ public class PeliLogiikkaTests {
                 }
             }   
         }
+    }
+    
+    @Test
+    public void onkoMiinaisAukiTrue() {
+         miinaKentta.getKentta().getMiinaKentta()[0][0].setAuki(true);
+         assertEquals(true,miinaKentta.getKentta().getMiinaKentta()[0][0].isAuki());   
+    }
+     public void onkoMiinaisAukiTrueEriKoordinaatit() {
+         miinaKentta.getKentta().getMiinaKentta()[kentanKoko-1][kentanKoko-1].setAuki(true);
+         assertEquals(true,miinaKentta.getKentta().getMiinaKentta()[kentanKoko-1][kentanKoko-1].isAuki());   
+    }
+    @Test
+    public void onkoMiinaisAukiFalse() {
+         assertEquals(false,miinaKentta.getKentta().getMiinaKentta()[0][0].isAuki());   
     }
 
     @Test
@@ -59,7 +73,7 @@ public class PeliLogiikkaTests {
             }
         }
         assertTrue(nollienLkm>=0&&nollienLkm<kentanKoko*kentanKoko);
-        System.out.println(nollienLkm);
+//        System.out.println(nollienLkm);
     }
     @Test
     public void josOsuiNollaanAvaaPelikenttaaEiAlustettuKentta() {
@@ -72,6 +86,6 @@ public class PeliLogiikkaTests {
         }
     }
     assertTrue(nollienLkm==kentanKoko*kentanKoko);
-    System.out.println(nollienLkm);
+//    System.out.println(nollienLkm);
     }
 }
