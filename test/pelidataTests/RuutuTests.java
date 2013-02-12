@@ -20,40 +20,22 @@ public class RuutuTests {
     
     private Ruutu ruutu;
     
-    public RuutuTests() {
-        
+    @Before
+    public void setUp() {
         ruutu=new Ruutu();
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+    @Test
+    public void konstruktoriLuoRuudunOikein() {
+        assertTrue(ruutu.isAuki()==false);
     }
-    
-    @AfterClass
-    public static void tearDownClass() {
+    @Test
+    public void konstruktoriLuoRuudunOikeinMiina() {
+        assertTrue(ruutu.isMiina()==false);
     }
-    
-    @Before
-    public void setUp() {
+    @Test
+    public void konstruktoriLuoRuudunOikeinnaapuriMiinojenLKM() {
+        assertTrue(ruutu.getNaapuriRuutujenMiinojenLukumaara()==0);
     }
-    
-    @After
-    public void tearDown() {
-    }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-     @Test
-     public void konstruktoriLuoRuudunOikeinisAuki() {
-         assertTrue(ruutu.isAuki()==false);
-     }
-     @Test
-     public void konstruktoriLuoRuudunOikeinMiina() {
-         assertTrue(ruutu.isMiina()==false);
-     }
-     @Test
-     public void konstruktoriLuoRuudunOikeinnaapuriMiinojenLKM() {
-         assertTrue(ruutu.getNaapuriRuutujenMiinojenLukumaara()==0);
-     }
      
 }

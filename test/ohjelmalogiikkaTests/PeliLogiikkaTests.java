@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import pelidata.Kentta;
 
 /**
  *
@@ -18,33 +19,66 @@ import static org.junit.Assert.*;
  */
 public class PeliLogiikkaTests {
     
-    private PeliLogiikka peliLogiikka;
+    private PeliLogiikka miinaKentta; 
+    private int kentanKoko=10;
     
     public PeliLogiikkaTests() {
-        
+        miinaKentta = new PeliLogiikka(kentanKoko);
     }
     
     @BeforeClass
     public static void setUpClass() {
     }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
     public void setUp() {
     }
-    
-    @After
-    public void tearDown() {
+      
+    @Test
+    public void miinojaLahellaTest() {
+        miinaKentta.miinojaLahella();
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                    //tbd 
+            }
+        }
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-     @Test
-     public void konstruktoriLuoPeliKentanJonkaKokoOn10() {
-         peliLogiikka = new PeliLogiikka(10);
-         assertEquals(10, peliLogiikka.getKentanKoko());
-     }
+    @Test
+    public void onkoMiinaTest() {
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                if(miinaKentta.onkoMiina(i, j)) {
+                    assertTrue(true);
+                    return;
+                }
+            }   
+        }
+    }
+
+    @Test
+    public void josOsuiNollaanAvaaPelikenttaaAlustettuKentta() {
+        int nollienLkm=0;
+        miinaKentta.miinojaLahella();
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                if(miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara()==0) {
+                    nollienLkm++;
+                }
+            }
+        }
+        assertTrue(nollienLkm>0);
+        System.out.println(nollienLkm);
+    }
+     public void josOsuiNollaanAvaaPelikenttaaEiAlustettuKentta() {
+        int nollienLkm=0;
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                if(miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara()==0) {
+                    nollienLkm++;
+                }
+            }
+        }
+        assertTrue(nollienLkm==100);
+        System.out.println(nollienLkm);
+    }
 }

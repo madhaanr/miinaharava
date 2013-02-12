@@ -4,7 +4,7 @@ import pelidata.Kentta;
 
 /* @author mhaanran */
 /**
- * PeliLogiikka luokassa on pelin varsinainen logiikka.
+ * PeliLogiikka luokassa on pelin varsinainen toimintalogiikka.
  * 
  */
 public class PeliLogiikka {
@@ -21,10 +21,10 @@ public class PeliLogiikka {
     public Kentta getKentta() {
         return kentta;
     }
-
-    public int getKentanKoko() {
-        return kentanKoko;
-    }
+//
+//    public int getKentanKoko() {
+//        return kentanKoko;
+//    }
 /**
  * Metodi tulostaa miinakentan.
  */    
@@ -72,16 +72,7 @@ public class PeliLogiikka {
             for(int j=0;j<kentanKoko;++j) {
                 if(kentta.getMiinaKentta()[i][j].isMiina()) {
                     kentta.getMiinaKentta()[i][j].setNaapuriRuutujenMiinojenLukumaara(9);
-//                    if(tarkistaRajat(i, j)) {
-//                        kentta.getMiinaKentta()[i-1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i-1][j].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i-1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i+1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i+1][j].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i+1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                    }
+
                     if(i-1>=0&&j-1>=0) {
                         kentta.getMiinaKentta()[i-1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
                     }
@@ -106,16 +97,28 @@ public class PeliLogiikka {
                     if(i+1<kentanKoko&&j+1<kentanKoko) {
                         kentta.getMiinaKentta()[i+1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
                     }
+//                  if(tarkistaRajat(i, j)) {
+//                        kentta.getMiinaKentta()[i-1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i-1][j].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i-1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i+1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i+1][j].setNaapuriRuutujenMiinojenLukumaara(1);
+//                        kentta.getMiinaKentta()[i+1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
+//                    }
                 }
             }
         }
     }
-    public boolean tarkistaRajat(int i, int j) {
-        if(i-1<0 || j-1<0 || i+1>=kentanKoko || j+1>=kentanKoko) {
-            return false;
-        }
-        return true;
-    }
+    
+    
+//    public boolean tarkistaRajat(int i, int j) {
+//        if(i-1<0 || j-1<0 || i+1>=kentanKoko || j+1>=kentanKoko) {
+//            return false;
+//        }
+//        return true;
+//    }
     
 /**
  * Metodi avaa lisää pelikenttää näkyville jos metodi getNaapuriRuutujenMiinojenLukumaara 

@@ -27,14 +27,6 @@ public class ArvontaTests {
     public ArvontaTests() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
     public void setUp() {
         kentanKoko=5;
@@ -47,12 +39,6 @@ public class ArvontaTests {
         }
     }
     
-    @After
-    public void tearDown() {
-    }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
      @Test
      public void miinaKenttallaOnYlarajaKoko() {  
          assertNotNull(miinaKentta[4][4]);
