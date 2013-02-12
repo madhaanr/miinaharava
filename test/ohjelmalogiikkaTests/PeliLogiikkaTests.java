@@ -66,7 +66,7 @@ public class PeliLogiikkaTests {
                 }
             }
         }
-        assertTrue(nollienLkm>0);
+        assertTrue(nollienLkm>=0&&nollienLkm<100);
         System.out.println(nollienLkm);
     }
      public void josOsuiNollaanAvaaPelikenttaaEiAlustettuKentta() {
