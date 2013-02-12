@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ohjelmalogiikkaTests;
+package ohjelmalogiikka;
 
 import ohjelmalogiikka.Arvonta;
 import org.junit.After;

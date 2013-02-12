@@ -6,7 +6,7 @@ import ohjelmalogiikka.PeliLogiikka;
 /* @author mhaanran */
 public class TekstiKayttoLiittyma {
     private static Scanner lukija = new Scanner(System.in);
-    PeliLogiikka miinaKentta;
+    private PeliLogiikka miinaKentta;
     
     public void aloitaPeli() {
         System.out.println("Tervetuloa miinaharava peliin!");
