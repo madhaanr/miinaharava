@@ -29,7 +29,7 @@ public class Arvonta {
         
         miinanKoordinaattiX = random.nextInt(kentanKoko);
         miinanKoordinaattiY = random.nextInt(kentanKoko);
-//        System.out.println( miinanKoordinaattiX+" : "+miinanKoordinaattiY+" ");
+        
         if(miinaKentta[miinanKoordinaattiX][miinanKoordinaattiY].isMiina()==true) {
             miinojenArpoja(miinaKentta);
         }

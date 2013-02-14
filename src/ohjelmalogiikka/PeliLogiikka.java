@@ -31,11 +31,11 @@ public class PeliLogiikka {
     public void tulostaKentta() {
         for (int i = 0; i < kentta.getKentanKoko(); ++i) {
             for (int j = 0; j < kentta.getKentanKoko(); ++j) {
-//                if (kentta.getMiinaKentta()[i][j].isAuki() == false) {
-                    System.out.print(kentta.getMiinaKentta()[i][j]);
-//                } else {
-//                    System.out.print(kentta.getMiinaKentta()[i][j]);
-//                }
+                if (kentta.getMiinaKentta()[i][j].isAuki() == false) {
+                    System.out.print("|"+i+" : "+j+ "|");
+                } else {
+                    System.out.print("|  "+kentta.getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara()+"  |");
+                }
             }
             System.out.println("");
         }
@@ -59,7 +59,7 @@ public class PeliLogiikka {
         } 
         else {
             System.out.println("Ei osunut");     
-            josOsuiNollaanAvaaPelikenttaa(koordinaattiX,koordinaattiY,0);
+            josOsuiNollaanAvaaPelikenttaa(koordinaattiX,koordinaattiY);
             kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
             return false;
         }
@@ -148,26 +148,36 @@ public class PeliLogiikka {
  * @param koordinaattiX vaakakoordinaatti.
  * @param koordinaattiY pystykoordinaatti.
  */
-    public void josOsuiNollaanAvaaPelikenttaa(int koordinaattiX, int koordinaattiY, int kerros) {
+    public void josOsuiNollaanAvaaPelikenttaa(int koordinaattiX, int koordinaattiY) {
 
         if(koordinaattiX<0 || koordinaattiY<0 || koordinaattiX>=kentanKoko || koordinaattiY>=kentanKoko) {
             return;
-        }
-//        System.out.println(koordinaattiX+" : "+koordinaattiY);
-        if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()!=0) {
-            if(kerros>2) {
-                return;
-            }
         }
         if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki()) {
             return;
         } 
         kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+
+        if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()!=0) {
+            return;
+        }
+               
+//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX-1, koordinaattiY);
+//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX+1, koordinaattiY); 
+//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX, koordinaattiY-1);
+//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX, koordinaattiY+1);
+//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX-1, koordinaattiY-1);
+//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX+1, koordinaattiY+1);
+//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX-1, koordinaattiY+1);
+//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX+1, koordinaattiY-1);
         
-        josOsuiNollaanAvaaPelikenttaa(koordinaattiX-1, koordinaattiY,++kerros);
-        josOsuiNollaanAvaaPelikenttaa(koordinaattiX+1, koordinaattiY,++kerros); 
-        josOsuiNollaanAvaaPelikenttaa(koordinaattiX, koordinaattiY-1,++kerros);
-        josOsuiNollaanAvaaPelikenttaa(koordinaattiX, koordinaattiY+1,++kerros);
+          
+          
+          for(int i=-1;i<2;++i) {
+            for(int j=-1;j<2;++j) {
+                josOsuiNollaanAvaaPelikenttaa((koordinaattiX+i),(koordinaattiY+j));
+            }
+        }
     }
     
     //    public void luoKentta() {

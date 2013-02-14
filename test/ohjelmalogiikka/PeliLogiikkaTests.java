@@ -77,15 +77,15 @@ public class PeliLogiikkaTests {
     }
     @Test
     public void josOsuiNollaanAvaaPelikenttaaEiAlustettuKentta() {
-    int nollienLkm=0;
-    for(int i=0;i<kentanKoko;++i) {
-        for(int j=0;j<kentanKoko;++j) {
-            if(miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara()==0) {
-                nollienLkm++;
+        int nollienLkm=0;
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                if(miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara()==0) {
+                    nollienLkm++;
+                }
             }
         }
-    }
-    assertTrue(nollienLkm==kentanKoko*kentanKoko);
+        assertTrue(nollienLkm==kentanKoko*kentanKoko);
 //    System.out.println(nollienLkm);
     }
 }
