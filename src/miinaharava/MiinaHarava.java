@@ -1,6 +1,5 @@
 package miinaharava;
 
-import javax.swing.SwingUtilities;
 import kayttoliittyma.GraafinenKayttoLiittyma;
 import kayttoliittyma.TekstiKayttoLiittyma;
 
@@ -14,12 +13,12 @@ public class MiinaHarava {
     
     public static void main(String args[]) {
 //        Graafinen käyttöliittymä
-//        GraafinenKayttoLiittyma GUI = new GraafinenKayttoLiittyma();
-//        SwingUtilities.invokeLater(GUI);
+        GraafinenKayttoLiittyma GUI = new GraafinenKayttoLiittyma();
+        GUI.alustaKomponentit();
         
         
         //TekstiKäyttöliittymä
-        TekstiKayttoLiittyma TKL = new TekstiKayttoLiittyma();
-        TKL.aloitaPeli();
+//        TekstiKayttoLiittyma TKL = new TekstiKayttoLiittyma();
+//        TKL.aloitaPeli();
     }
 }
