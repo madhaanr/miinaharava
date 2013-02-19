@@ -1,9 +1,6 @@
 package kayttoliittyma;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -21,7 +18,7 @@ import ohjelmalogiikka.PeliLogiikka;
 /* @author mhaanran */
 public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
 
-    private JPanel paaIkkuna,ylaRiviIkkuna,kenttaRuudukkoIkkuna;
+    private JPanel paaIkkuna;
     private JButton uusiPeli;
     private JLabel naytaAikaa;
     private PeliLogiikka miinaKentta;
@@ -74,7 +71,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
          
     }
 
-    public JButton uusiPeli(GridBagConstraints gridBagConstraints) {
+    public void uusiPeli(GridBagConstraints gridBagConstraints) {
         uusiPeli = new JButton("Uusi");
         uusiPeli.setPreferredSize(new Dimension(50,50));
         uusiPeli.setFont(new Font("Dialog",Font.PLAIN, 12));
@@ -86,10 +83,9 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         gridBagConstraints.ipady=0;
         paaIkkuna.add(uusiPeli,gridBagConstraints);
         uusiPeli.addActionListener(this);
-        return uusiPeli;
     }
 
-    public JLabel naytaAikaa(GridBagConstraints gridBagConstraints) {
+    public void naytaAikaa(GridBagConstraints gridBagConstraints) {
         naytaAikaa = new JLabel();
         naytaAikaa.setPreferredSize(new Dimension(50,50));
         gridBagConstraints.fill=GridBagConstraints.HORIZONTAL;
@@ -103,10 +99,9 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         alkuAika=System.currentTimeMillis();
         timer.start();
         paaIkkuna.add(naytaAikaa,gridBagConstraints);
-        return naytaAikaa;
     }
 
-    public JButton miinaNappi(GridBagConstraints gridBagConstraints) {
+    public void miinaNappi(GridBagConstraints gridBagConstraints) {
         miinaNappi=new JButton[kentanKoko][kentanKoko];
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.weightx=0.1;
@@ -115,18 +110,15 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         gridBagConstraints.gridx=0;
         gridBagConstraints.ipadx=0;
         gridBagConstraints.ipady=0;
-//        gridBagConstraints.gridwidth=1;
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {       
                 miinaNappi[i][j]=new JButton();
                 miinaNappi[i][j].setPreferredSize(new Dimension(50,50));
                 miinaNappi[i][j].addActionListener(this);
-//                miinaNappi[i][j].setActionCommand("command"+i+"-"+j);
                 paaIkkuna.add(miinaNappi[i][j],gridBagConstraints);
                 gridBagConstraints.gridx=0+j;
             }
             gridBagConstraints.gridy=1+i;        
         }
-        return miinaNappi[koordinaattiX][koordinaattiY];
     }
 }
