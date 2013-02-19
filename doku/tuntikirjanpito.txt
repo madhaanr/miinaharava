@@ -12,4 +12,5 @@
 10.2.2013 Sekvenssikaavioita lisätty. 1.5 tuntia. Koodikatselmointi 1. 3 tuntia.
 12.2.2013 Testejä lisätty. Graafisenkäyttöliittymän kehitys aloitettu 7 tuntia.
 14.2.2013 Ohjelma loogiikkaa korjattu. Tekstikäyttöliittymä viimeistelty. 2 tuntia.
-17.2.2013 Graafisen liittymän suunnittelua. 2 tuntia. Koodikatselmointi 2. 2 tuntia.
+17.2.2013 Graafisenliittymän suunnittelua. 2 tuntia. Koodikatselmointi 2. 2 tuntia.
+19.2.2013 Graafisenkäyttöliittymän tekoa. 2 tuntia.
