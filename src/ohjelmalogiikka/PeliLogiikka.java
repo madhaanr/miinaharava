@@ -64,27 +64,7 @@ public class PeliLogiikka {
             return false;
         }
     }
-//    public boolean onkoRuutuAuki(int koordinaattiX, int koordinaattiY) {
-//        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki() == true) {
-//            System.out.println("Ruutu on jo auki! Anna uudet koordinaatit.");
-//            return false;
-//        }
-//        return true;
-//    }
-//    public boolean onkoRuudussaMiina(int koordinaattiX, int koordinaattiY) {
-//        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isMiina() == true) {
-//           System.out.println("Osuit miinaan! Peli Ohi!");
-//           kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
-//           return true;
-//       } 
-//       return false;
-//    }
-//    public boolean eiOsunut(int koordinaattiX, int koordinaattiY) {
-//        System.out.println("Ei osunut");     
-//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX,koordinaattiY,0);
-//        kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
-//        return false;
-//        }
+
 /**
  * Metodi miinojaLahella käy läpi pelikentän joka ruudun ja jos jossain 
  * ruudussa on miina niin sen ruudun miinojalahella arvoksi asetetaan 9. 
@@ -134,14 +114,6 @@ public class PeliLogiikka {
         }
     }
     
-    
-//    public boolean tarkistaRajat(int i, int j) {
-//        if(i-1<0 || j-1<0 || i+1>=kentanKoko || j+1>=kentanKoko) {
-//            return false;
-//        }
-//        return true;
-//    }
-    
 /**
  * Metodi avaa lisää pelikenttää näkyville jos metodi getNaapuriRuutujenMiinojenLukumaara 
  * palauttaa arvon 0.
@@ -161,45 +133,12 @@ public class PeliLogiikka {
         if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()!=0) {
             return;
         }
-               
-//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX-1, koordinaattiY);
-//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX+1, koordinaattiY); 
-//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX, koordinaattiY-1);
-//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX, koordinaattiY+1);
-//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX-1, koordinaattiY-1);
-//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX+1, koordinaattiY+1);
-//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX-1, koordinaattiY+1);
-//        josOsuiNollaanAvaaPelikenttaa(koordinaattiX+1, koordinaattiY-1);
-        
-          
-          
-          for(int i=-1;i<2;++i) {
+                      
+        for(int i=-1;i<2;++i) {
             for(int j=-1;j<2;++j) {
                 josOsuiNollaanAvaaPelikenttaa((koordinaattiX+i),(koordinaattiY+j));
             }
         }
     }
     
-    //    public void luoKentta() {
-//        for (int i = 0; i < kentta.getMiinojenLukumaara(); ++i) {
-//            kentta.setMiinaKentta(miinaKentta);
-//        }
-//    }
-
-//    public void luoKentta(int miinojenLukumaara, Kentta kentta) {
-//        kentta.setMiinojenLukumaara(miinojenLukumaara);
-//        for (int i = 0; i < miinojenLukumaara; ++i) {
-//            kentta.setMiinaKentta() = arvonta.miinojenArpoja(kentta.miinaKentta);
-//        }
-//    }
-
-    //    public void tulostaKentta() {
-    //        for(int i=0;i<kentanKoko;++i) {
-    //            for(int j=0;j<kentanKoko;++j) {
-    //                System.out.print(miinaKentta[i][j]);
-    //            }
-    //            System.out.println("");
-    //        }
-    //    }
-
 }
