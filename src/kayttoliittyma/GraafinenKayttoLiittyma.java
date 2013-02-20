@@ -98,12 +98,12 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {       
                 miinaNappi[i][j]=new JButton();
-                miinaNappi[i][j].setBackground(Color.red);
+                miinaNappi[i][j].setBackground(Color.green);
                 miinaNappi[i][j].setPreferredSize(new Dimension(30,30));
                 koordinaattiX=i;
                 koordinaattiY=j;
-                kuuntelija = new Kuuntelija(miinaKentta,koordinaattiX, koordinaattiY);
-                hiiriKuuntelija = new HiiriKuuntelija(miinaKentta,koordinaattiX, koordinaattiY);
+//                kuuntelija = new Kuuntelija(miinaKentta,koordinaattiX, koordinaattiY);
+                hiiriKuuntelija = new HiiriKuuntelija(this, miinaKentta,koordinaattiX, koordinaattiY);
                 miinaNappi[i][j].addMouseListener(hiiriKuuntelija);
                 paaIkkuna.add(miinaNappi[i][j],gridBagConstraints);
                 gridBagConstraints.gridx=0+j;
@@ -121,5 +121,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
             alustaKomponentit();
         }        
     }
+    
+    
    
 }
