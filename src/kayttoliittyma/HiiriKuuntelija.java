@@ -55,6 +55,7 @@ public class HiiriKuuntelija implements MouseListener {
         if(SwingUtilities.isLeftMouseButton(e)) {
             System.out.println(koordinaattiX+" : "+koordinaattiY);     
             //jos osuu miinaan niin pelin pitää loppua
+           
             int naapuriRuutujenMiinojenLukumaara = miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara();
             if(naapuriRuutujenMiinojenLukumaara>8) {
                 tamaNappi.setBackground(Color.red);
@@ -63,10 +64,20 @@ public class HiiriKuuntelija implements MouseListener {
                 gui.peliOhi("Osuit miinaan!");
                 timer.stop();             
             }
-            
+            else if(naapuriRuutujenMiinojenLukumaara==0) {
+                miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
+                for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
+                    for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
+                        if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()) {
+                            JButton thisNappi = (JButton) e.getSource(); 
+                            thisNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());
+                        }
+                    }
+                }
+            }
             else {
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
-            }
+            }    
             
         }      
         gui.repaint();      
