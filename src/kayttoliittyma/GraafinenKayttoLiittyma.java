@@ -28,14 +28,17 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     private SimpleDateFormat ajanMuoto = new SimpleDateFormat("mm:ss");
     private long alkuAika;
     JButton[][] miinaNappi;
+    private Kuuntelija kuuntelija;
     
     
     public GraafinenKayttoLiittyma() {
-        
-    }   
-    public void alustaKomponentit() {  
         miinaKentta = new PeliLogiikka(kentanKoko);
         miinaKentta.miinojaLahella();
+        this.koordinaattiX=0;
+        this.koordinaattiY=0;
+    }   
+    
+    public void alustaKomponentit() {      
         setTitle("Miinaharava");
         setPreferredSize(new Dimension(700,600));  
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -64,10 +67,10 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         if(e.getSource().equals(uusiPeli)) {
             alustaKomponentit();
         }
-        if(e.getSource() instanceof JButton) {
-            e.getActionCommand();
-            miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
-        }
+//        if(e.getSource() instanceof JButton) {
+//            e.getActionCommand();
+//            miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
+//        }
          
     }
 
@@ -114,7 +117,10 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
             for(int j=0;j<kentanKoko;++j) {       
                 miinaNappi[i][j]=new JButton();
                 miinaNappi[i][j].setPreferredSize(new Dimension(50,50));
-                miinaNappi[i][j].addActionListener(this);
+                koordinaattiX=i;
+                koordinaattiY=j;
+                kuuntelija = new Kuuntelija(miinaKentta,koordinaattiX, koordinaattiY);
+                miinaNappi[i][j].addActionListener(kuuntelija);
                 paaIkkuna.add(miinaNappi[i][j],gridBagConstraints);
                 gridBagConstraints.gridx=0+j;
             }
