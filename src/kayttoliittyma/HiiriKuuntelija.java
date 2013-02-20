@@ -21,6 +21,7 @@ public class HiiriKuuntelija implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if(SwingUtilities.isRightMouseButton(e)) {
             System.out.println("oikea nappia painettu");
+            
         }
         if(SwingUtilities.isLeftMouseButton(e)) {
             System.out.println(koordinaattiX+" : "+koordinaattiY);

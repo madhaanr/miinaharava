@@ -41,7 +41,7 @@ public class PeliLogiikka {
         }
     }
     /**
-     * Metodi pelikentän tulostamiseen graafiselle käyttöliittymälle.
+     * Metodi pelikentän tulostamiseen graafiseen käyttöliittymään.
      */
     public void tulostaKenttaGUI() {
          for(int i=0;i<kentanKoko;++i) {
