@@ -22,7 +22,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
 
     private JPanel paaIkkuna, ylaRiviIkkuna, peliKenttaIkkuna;
     private JButton uusiPeli;
-    private JLabel naytaAikaa;
+    private JLabel naytaAikaa,miinojenLKM, peliOhi;
     private PeliLogiikka miinaKentta;
     private int kentanKoko=10;
     private int koordinaattiX, koordinaattiY;
@@ -58,6 +58,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         
         uusiPeli();
         naytaAikaa();
+        naytaMiinojenLKM();
         miinaNappi(gridBagConstraints);
         
         setContentPane(paaIkkuna);
@@ -76,16 +77,29 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
 
     public void naytaAikaa() {
         naytaAikaa = new JLabel();
-        naytaAikaa.setPreferredSize(new Dimension(250,30));
+        naytaAikaa.setPreferredSize(new Dimension(200,30));
         naytaAikaa.setText(ajanMuoto.format(new Date(0)));
         naytaAikaa.setFont(new Font("Dialog",Font.PLAIN, 16));
         timer = new Timer(1000,this);
         timer.setRepeats(true);
         alkuAika=System.currentTimeMillis();
         timer.start();
-        ylaRiviIkkuna.add(naytaAikaa,BorderLayout.EAST);
+        ylaRiviIkkuna.add(naytaAikaa);
+    }
+    public void peliOhi() {
+        peliOhi = new JLabel();
+        peliOhi.setPreferredSize(new Dimension(50,30));
+        ylaRiviIkkuna.add(peliOhi);
     }
 
+    public void naytaMiinojenLKM() {
+        miinojenLKM=new JLabel();
+        miinojenLKM.setPreferredSize(new Dimension(50,30));
+        miinojenLKM.addMouseListener(hiiriKuuntelija);
+        miinojenLKM.setText(""+miinaKentta.getKentta().getMiinojenLukumaara());
+        ylaRiviIkkuna.add(miinojenLKM,BorderLayout.EAST);
+    }
+    
     public void miinaNappi(GridBagConstraints gridBagConstraints) {
         miinaNappi=new JButton[kentanKoko][kentanKoko];
         gridBagConstraints.fill = GridBagConstraints.BOTH;
@@ -103,7 +117,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
                 koordinaattiX=i;
                 koordinaattiY=j;
 //                kuuntelija = new Kuuntelija(miinaKentta,koordinaattiX, koordinaattiY);
-                hiiriKuuntelija = new HiiriKuuntelija(this, miinaKentta,koordinaattiX, koordinaattiY);
+                hiiriKuuntelija = new HiiriKuuntelija(this, miinaKentta,koordinaattiX, koordinaattiY,timer);
                 miinaNappi[i][j].addMouseListener(hiiriKuuntelija);
                 paaIkkuna.add(miinaNappi[i][j],gridBagConstraints);
                 gridBagConstraints.gridx=0+j;
@@ -116,12 +130,11 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(timer)) {
             naytaAikaa.setText(ajanMuoto.format(new Date(System.currentTimeMillis()-alkuAika)));
+            miinojenLKM.setText(""+miinaKentta.getKentta().getMiinojenLukumaara());
         }
         if(e.getSource().equals(uusiPeli)) {
             alustaKomponentit();
-        }        
-    }
-    
-    
-   
+            miinaKentta.getKentta().setMiinojenLukumaara((kentanKoko*kentanKoko)/5);
+        }             
+    }   
 }
