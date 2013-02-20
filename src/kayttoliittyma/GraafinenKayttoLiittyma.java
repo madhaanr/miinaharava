@@ -31,6 +31,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     private long alkuAika;
     JButton[][] miinaNappi;
     private Kuuntelija kuuntelija;
+    private HiiriKuuntelija hiiriKuuntelija;
     
     
     public GraafinenKayttoLiittyma() {
@@ -128,7 +129,9 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
                 koordinaattiX=i;
                 koordinaattiY=j;
                 kuuntelija = new Kuuntelija(miinaKentta,koordinaattiX, koordinaattiY);
-                miinaNappi[i][j].addActionListener(kuuntelija);
+                hiiriKuuntelija = new HiiriKuuntelija(miinaKentta,koordinaattiX, koordinaattiY);
+//                miinaNappi[i][j].addActionListener(kuuntelija);
+                miinaNappi[i][j].addMouseListener(hiiriKuuntelija);
                 paaIkkuna.add(miinaNappi[i][j],gridBagConstraints);
                 gridBagConstraints.gridx=0+j;
             }

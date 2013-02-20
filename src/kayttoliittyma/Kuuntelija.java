@@ -15,13 +15,10 @@ public class Kuuntelija implements ActionListener{
         this.koordinaattiY=koordinaattiY;
         this.miinaKentta=miinaKentta;
     }
-    
     @Override
     public void actionPerformed(ActionEvent e) {
-         System.out.println(koordinaattiX+" : "+koordinaattiY);
-         miinaKentta.onkoMiina(koordinaattiX, koordinaattiY); 
-         miinaKentta.tulostaKenttaGUI();
+        System.out.println(koordinaattiX+" : "+koordinaattiY);
+        miinaKentta.onkoMiina(koordinaattiX, koordinaattiY); 
+        miinaKentta.tulostaKenttaGUI();
     }
-    
-
 }
