@@ -26,7 +26,7 @@ public class PeliLogiikka {
 //        return kentanKoko;
 //    }
 /**
- * Metodi tulostaa miinakentan.
+ * Metodi tulostaa miinakentän tekstikäyttöliittymälle..
  */    
     public void tulostaKentta() {
         for (int i = 0; i < kentta.getKentanKoko(); ++i) {
@@ -40,6 +40,18 @@ public class PeliLogiikka {
             System.out.println("");
         }
     }
+    /**
+     * Metodi pelikentän tulostamiseen graafiselle käyttöliittymälle.
+     */
+    public void tulostaKenttaGUI() {
+         for(int i=0;i<kentanKoko;++i) {
+             for(int j=0;j<kentanKoko;++j) {
+                 if(kentta.getMiinaKentta()[i][j].isAuki()==true) {
+                     kentta.getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara();
+                 }
+             }
+         }
+     }
 /**
  * Metodi onkoMiina tarkistaa onko pelaajan valitsemissa koordinaateissa sijaitse-
  * vassa peliruudussa miina.
@@ -98,17 +110,7 @@ public class PeliLogiikka {
                     }
                     if(i+1<kentanKoko&&j+1<kentanKoko) {
                         kentta.getMiinaKentta()[i+1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
-                    }
-//                  if(tarkistaRajat(i, j)) {
-//                        kentta.getMiinaKentta()[i-1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i-1][j].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i-1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i+1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i+1][j].setNaapuriRuutujenMiinojenLukumaara(1);
-//                        kentta.getMiinaKentta()[i+1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
-//                    }
+                    }              
                 }
             }
         }

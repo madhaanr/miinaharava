@@ -19,7 +19,9 @@ public class Kuuntelija implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
          System.out.println(koordinaattiX+" : "+koordinaattiY);
-         miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);    
+         miinaKentta.onkoMiina(koordinaattiX, koordinaattiY); 
+         miinaKentta.tulostaKenttaGUI();
     }
+    
 
 }

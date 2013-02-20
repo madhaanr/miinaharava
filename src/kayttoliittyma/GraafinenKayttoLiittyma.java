@@ -1,5 +1,7 @@
 package kayttoliittyma;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -18,7 +20,7 @@ import ohjelmalogiikka.PeliLogiikka;
 /* @author mhaanran */
 public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
 
-    private JPanel paaIkkuna;
+    private JPanel paaIkkuna, ylaRiviIkkuna, peliKenttaIkkuna;
     private JButton uusiPeli;
     private JLabel naytaAikaa;
     private PeliLogiikka miinaKentta;
@@ -40,17 +42,22 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     
     public void alustaKomponentit() {      
         setTitle("Miinaharava");
-        setPreferredSize(new Dimension(700,600));  
+        setPreferredSize(new Dimension(380,420));  
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         GridBagLayout gridBagLayout = new GridBagLayout();      
         paaIkkuna = new JPanel();
-        paaIkkuna.setLayout(gridBagLayout);     
-    
+        ylaRiviIkkuna = new JPanel();
+        peliKenttaIkkuna=new JPanel();
+//        ylaRiviIkkuna.setLayout(new BorderLayout());
+        paaIkkuna.add(ylaRiviIkkuna,BorderLayout.NORTH);
+        peliKenttaIkkuna.setLayout(gridBagLayout);
+        paaIkkuna.add(peliKenttaIkkuna,BorderLayout.SOUTH);
+        
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         
-        uusiPeli(gridBagConstraints);
-        naytaAikaa(gridBagConstraints);
+        uusiPeli();
+        naytaAikaa();
         miinaNappi(gridBagConstraints);
         
         setContentPane(paaIkkuna);
@@ -74,34 +81,34 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
          
     }
 
-    public void uusiPeli(GridBagConstraints gridBagConstraints) {
-        uusiPeli = new JButton("Uusi");
-        uusiPeli.setPreferredSize(new Dimension(50,50));
+    public void uusiPeli() {
+        uusiPeli = new JButton("Uusi Peli");
+        uusiPeli.setPreferredSize(new Dimension(100,30));
         uusiPeli.setFont(new Font("Dialog",Font.PLAIN, 12));
-        gridBagConstraints.fill=GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx=0.0;
-        gridBagConstraints.gridy=0;
-        gridBagConstraints.gridx=0;
-        gridBagConstraints.ipadx=0;
-        gridBagConstraints.ipady=0;
-        paaIkkuna.add(uusiPeli,gridBagConstraints);
+//        gridBagConstraints.fill=GridBagConstraints.HORIZONTAL;
+//        gridBagConstraints.weightx=0.0;
+//        gridBagConstraints.gridy=0;
+//        gridBagConstraints.gridx=0;
+//        gridBagConstraints.ipadx=0;
+//        gridBagConstraints.ipady=0;
+        ylaRiviIkkuna.add(uusiPeli,BorderLayout.WEST);
         uusiPeli.addActionListener(this);
     }
 
-    public void naytaAikaa(GridBagConstraints gridBagConstraints) {
+    public void naytaAikaa() {
         naytaAikaa = new JLabel();
-        naytaAikaa.setPreferredSize(new Dimension(50,50));
-        gridBagConstraints.fill=GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx=0.0;
-        gridBagConstraints.gridy=0;
-        gridBagConstraints.gridx=kentanKoko-1;
+        naytaAikaa.setPreferredSize(new Dimension(250,30));
+//        gridBagConstraints.fill=GridBagConstraints.HORIZONTAL;
+//        gridBagConstraints.weightx=0.0;
+//        gridBagConstraints.gridy=0;
+//        gridBagConstraints.gridx=kentanKoko-1;
         naytaAikaa.setText(ajanMuoto.format(new Date(0)));
         naytaAikaa.setFont(new Font("Dialog",Font.PLAIN, 16));
         timer = new Timer(1000,this);
         timer.setRepeats(true);
         alkuAika=System.currentTimeMillis();
         timer.start();
-        paaIkkuna.add(naytaAikaa,gridBagConstraints);
+        ylaRiviIkkuna.add(naytaAikaa,BorderLayout.EAST);
     }
 
     public void miinaNappi(GridBagConstraints gridBagConstraints) {
@@ -116,7 +123,8 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {       
                 miinaNappi[i][j]=new JButton();
-                miinaNappi[i][j].setPreferredSize(new Dimension(50,50));
+                miinaNappi[i][j].setBackground(Color.red);
+                miinaNappi[i][j].setPreferredSize(new Dimension(30,30));
                 koordinaattiX=i;
                 koordinaattiY=j;
                 kuuntelija = new Kuuntelija(miinaKentta,koordinaattiX, koordinaattiY);
