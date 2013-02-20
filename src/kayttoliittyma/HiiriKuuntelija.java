@@ -30,6 +30,7 @@ public class HiiriKuuntelija implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         JButton tamaNappi = (JButton) e.getSource(); 
         tamaNappi.setMargin(new Insets(0,0,0,0));
+        tamaNappi.setBorder(null);
         tamaNappi.setFont(new Font("Times New Roman",Font.PLAIN, 20));
         if(SwingUtilities.isRightMouseButton(e)) {
             if(miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].isMerkattu()==false) {
@@ -59,11 +60,14 @@ public class HiiriKuuntelija implements MouseListener {
                 tamaNappi.setBackground(Color.red);
                 tamaNappi.setForeground(Color.black);
                 tamaNappi.setText("¤"); 
-                timer.stop();            
+                gui.peliOhi("Osuit miinaan!");
+                timer.stop();             
             }
+            
             else {
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
             }
+            
         }      
         gui.repaint();      
     }

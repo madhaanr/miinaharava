@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -20,7 +21,7 @@ import ohjelmalogiikka.PeliLogiikka;
 /* @author mhaanran */
 public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
 
-    private JPanel paaIkkuna, ylaRiviIkkuna, peliKenttaIkkuna;
+    private JPanel paaIkkuna, ylaRiviIkkuna, peliKenttaIkkuna,alaRiviIkkuna;
     private JButton uusiPeli;
     private JLabel naytaAikaa,miinojenLKM, peliOhi;
     private PeliLogiikka miinaKentta;
@@ -30,7 +31,6 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     private SimpleDateFormat ajanMuoto = new SimpleDateFormat("mm:ss");
     private long alkuAika;
     JButton[][] miinaNappi;
-    private Kuuntelija kuuntelija;
     private HiiriKuuntelija hiiriKuuntelija;
     
     
@@ -43,22 +43,25 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     
     public void alustaKomponentit() {      
         setTitle("Miinaharava");
-        setPreferredSize(new Dimension(380,420));  
+        setPreferredSize(new Dimension(380,460));  
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         GridBagLayout gridBagLayout = new GridBagLayout();      
         paaIkkuna = new JPanel();
         ylaRiviIkkuna = new JPanel();
-        peliKenttaIkkuna=new JPanel();
-        paaIkkuna.add(ylaRiviIkkuna,BorderLayout.NORTH);
+        peliKenttaIkkuna = new JPanel();
+        alaRiviIkkuna = new JPanel();
+        paaIkkuna.add(ylaRiviIkkuna);
         peliKenttaIkkuna.setLayout(gridBagLayout);
-        paaIkkuna.add(peliKenttaIkkuna,BorderLayout.SOUTH);
+        paaIkkuna.add(peliKenttaIkkuna);
+        paaIkkuna.add(alaRiviIkkuna);
         
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         
         uusiPeli();
         naytaAikaa();
-        naytaMiinojenLKM();
+        naytaMiinojenLKM();  
+        peliOhi("");
         miinaNappi(gridBagConstraints);
         
         setContentPane(paaIkkuna);
@@ -70,7 +73,9 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     public void uusiPeli() {
         uusiPeli = new JButton("Uusi Peli");
         uusiPeli.setPreferredSize(new Dimension(100,30));
-        uusiPeli.setFont(new Font("Dialog",Font.PLAIN, 12));
+        uusiPeli.setMargin(new Insets(0,0,0,0));
+        uusiPeli.setBorder(null);
+        uusiPeli.setFont(new Font("Times New Roman",Font.PLAIN, 20));
         ylaRiviIkkuna.add(uusiPeli,BorderLayout.WEST);
         uusiPeli.addActionListener(this);
     }
@@ -79,25 +84,28 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         naytaAikaa = new JLabel();
         naytaAikaa.setPreferredSize(new Dimension(200,30));
         naytaAikaa.setText(ajanMuoto.format(new Date(0)));
-        naytaAikaa.setFont(new Font("Dialog",Font.PLAIN, 16));
+        naytaAikaa.setFont(new Font("Times New Roman",Font.PLAIN, 16));
         timer = new Timer(1000,this);
         timer.setRepeats(true);
         alkuAika=System.currentTimeMillis();
         timer.start();
         ylaRiviIkkuna.add(naytaAikaa);
     }
-    public void peliOhi() {
-        peliOhi = new JLabel();
-        peliOhi.setPreferredSize(new Dimension(50,30));
-        ylaRiviIkkuna.add(peliOhi);
-    }
-
+        
     public void naytaMiinojenLKM() {
         miinojenLKM=new JLabel();
         miinojenLKM.setPreferredSize(new Dimension(50,30));
         miinojenLKM.addMouseListener(hiiriKuuntelija);
         miinojenLKM.setText(""+miinaKentta.getKentta().getMiinojenLukumaara());
         ylaRiviIkkuna.add(miinojenLKM,BorderLayout.EAST);
+    }
+    
+    public void peliOhi(String tilanne) {
+        peliOhi = new JLabel();
+        peliOhi.setPreferredSize(new Dimension(360,30));
+        peliOhi.setBorder(null);
+        peliOhi.setText(tilanne);
+        alaRiviIkkuna.add(peliOhi);       
     }
     
     public void miinaNappi(GridBagConstraints gridBagConstraints) {
@@ -112,6 +120,8 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {       
                 miinaNappi[i][j]=new JButton();
+                miinaNappi[i][j].setBorder(null);
+                miinaNappi[i][j].setMargin(new Insets(0,0,0,0));
                 miinaNappi[i][j].setBackground(Color.green);
                 miinaNappi[i][j].setPreferredSize(new Dimension(30,30));
                 koordinaattiX=i;
@@ -133,8 +143,9 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
             miinojenLKM.setText(""+miinaKentta.getKentta().getMiinojenLukumaara());
         }
         if(e.getSource().equals(uusiPeli)) {
+            miinaKentta=new PeliLogiikka(kentanKoko);
+            miinaKentta.miinojaLahella();
             alustaKomponentit();
-            miinaKentta.getKentta().setMiinojenLukumaara((kentanKoko*kentanKoko)/5);
         }             
     }   
 }
