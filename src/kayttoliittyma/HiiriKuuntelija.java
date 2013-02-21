@@ -55,50 +55,50 @@ public class HiiriKuuntelija implements MouseListener {
         }
         if(SwingUtilities.isLeftMouseButton(e)) {
 //            System.out.println(koordinaattiX+" : "+koordinaattiY);
-            avoimiaRuutuja=miinaKentta.getKentta().getAvoimiaRuutuja();
-            --avoimiaRuutuja;
-            miinaKentta.getKentta().setAvoimiaRuutuja(avoimiaRuutuja);
-            System.out.println(avoimiaRuutuja);
-            //jos osuu miinaan niin pelin pitää loppua
-            
+//             avoimiaRuutuja=miinaKentta.getKentta().getAvoimiaRuutuja();
+//             --avoimiaRuutuja;
+//             miinaKentta.getKentta().setAvoimiaRuutuja(avoimiaRuutuja);
+            System.out.println(miinaKentta.getKentta().getAvoimiaRuutuja());
+        
             int naapuriRuutujenMiinojenLukumaara = miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara();
             if(naapuriRuutujenMiinojenLukumaara>=9) {
                 tamaNappi.setBackground(Color.red);
                 tamaNappi.setForeground(Color.black);
                 tamaNappi.setText("¤"); 
                 gui.peliOhi("Osuit miinaan!");
-                timer.stop();             
+                timer.stop();
+                gui.repaint();
+                return;
             }
-            
-            else if(avoimiaRuutuja==0) {
+           
+            if(naapuriRuutujenMiinojenLukumaara==0) {
+                JButton[][] miinaNappi = new JButton[10][10];
+                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
+                miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
+                gui.avaaKenttaaJosNolla(gui.gridBagConstraints);
+                for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
+                    for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
+                        if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {
+                            miinaNappi[i][j]=new JButton();
+                            if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()==true) {
+                                tamaNappi=miinaNappi[i][j];
+                                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());  
+                            }
+                        }
+                    }
+                }
+            }
+           if(miinaKentta.getKentta().getAvoimiaRuutuja()==0) {
                 gui.peliOhi("Voitit!");
                 timer.stop();
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
-            }
-           
-            else if(naapuriRuutujenMiinojenLukumaara==0) {
-//                JButton[][] miinaNappi = new JButton[10][10];
-//                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
-                miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
-                gui.avaaKenttaaJosNolla(gui.gridBagConstraints,koordinaattiX,koordinaattiY);
-//                for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
-//                    for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
-//                        if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {
-//                            miinaNappi[i][j]=new JButton();
-//                            if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()==true) {
-//                                tamaNappi=miinaNappi[i][j];
-//                                System.out.println(i+"::"+j);
-//                                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());
-//                               
-//                            }
-//                        }
-//                    }
-//                }
             }
             else {        
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
             }             
         }      
+        
+        
         gui.repaint();      
     }
 

@@ -30,7 +30,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     private Timer timer;
     private SimpleDateFormat ajanMuoto = new SimpleDateFormat("mm:ss");
     private long alkuAika;
-    JButton[][] miinaNappi;
+    JButton[][] miinaNapit;
     JButton[][] nollaMiinaa;
     private HiiriKuuntelija hiiriKuuntelija;
     GridBagLayout gridBagLayout;
@@ -111,7 +111,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     }
     
     public void miinaNappi(GridBagConstraints gridBagConstraints) {
-        miinaNappi=new JButton[kentanKoko][kentanKoko];
+        miinaNapit=new JButton[kentanKoko][kentanKoko];
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.weightx=0.1;
         gridBagConstraints.weighty=1.0;
@@ -121,41 +121,46 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         gridBagConstraints.ipady=0;
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {       
-                miinaNappi[i][j]=new JButton();
-                miinaNappi[i][j].setBorder(null);
-                miinaNappi[i][j].setMargin(new Insets(0,0,0,0));
-                miinaNappi[i][j].setBackground(Color.green);
-                miinaNappi[i][j].setPreferredSize(new Dimension(30,30));
+                miinaNapit[i][j]=new JButton();
+                miinaNapit[i][j].setBorder(null);
+                miinaNapit[i][j].setMargin(new Insets(0,0,0,0));
+                miinaNapit[i][j].setBackground(Color.green);
+                miinaNapit[i][j].setPreferredSize(new Dimension(30,30));
                 koordinaattiX=i;
                 koordinaattiY=j;
-//                kuuntelija = new Kuuntelija(miinaKentta,koordinaattiX, koordinaattiY);
                 hiiriKuuntelija = new HiiriKuuntelija(this, miinaKentta,koordinaattiX, koordinaattiY,timer);
-                miinaNappi[i][j].addMouseListener(hiiriKuuntelija);
-                paaIkkuna.add(miinaNappi[i][j],gridBagConstraints);
+                miinaNapit[i][j].addMouseListener(hiiriKuuntelija);
+                paaIkkuna.add(miinaNapit[i][j],gridBagConstraints);
                 gridBagConstraints.gridx=0+j;
             }
             gridBagConstraints.gridy=0+i;        
         }
+       
      }
-    public void avaaKenttaaJosNolla(GridBagConstraints gridBagConstraints,int koordinaattiX, int koordinaattiY) {
-       nollaMiinaa = new JButton[10][10];
-//       nollaMiinaa[][].setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
-//       miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
-       for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
+    public void avaaKenttaaJosNolla(GridBagConstraints gridBagConstraints) {
+//        miinaNapit = new JButton[kentanKoko][kentanKoko];
+        gridBagConstraints.fill = GridBagConstraints.BOTH;
+        gridBagConstraints.weightx=0.1;
+        gridBagConstraints.weighty=1.0;
+        gridBagConstraints.gridy=0;
+        gridBagConstraints.gridx=0;
+        gridBagConstraints.ipadx=0;
+        gridBagConstraints.ipady=0;
+    //       nollaMiinaa[][].setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
+    //       miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
+        for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
            for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
                if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {   
                    if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()==true) {   
-                       nollaMiinaa[i][j]=new JButton();
-                       nollaMiinaa[i][j].setBorder(null);
-                       nollaMiinaa[i][j].setMargin(new Insets(0,0,0,0));
-                       nollaMiinaa[i][j].setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());
-                       hiiriKuuntelija = new HiiriKuuntelija(this, miinaKentta,koordinaattiX, koordinaattiY,timer);
-                       nollaMiinaa[i][j].addMouseListener(hiiriKuuntelija);
-                       paaIkkuna.add(nollaMiinaa[i][j],gridBagConstraints);
+                       miinaNapit[i][j].setBorder(null);
+                       miinaNapit[i][j].setMargin(new Insets(0,0,0,0));
+                       miinaNapit[i][j].setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());  
+                       gridBagConstraints.gridx=0+j;
                    }
+                   gridBagConstraints.gridy=0+i; 
                }
            }
-       }
+        }
     }
     
     @Override

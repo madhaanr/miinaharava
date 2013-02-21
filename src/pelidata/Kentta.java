@@ -39,6 +39,7 @@ public class Kentta {
             }
         }
         avoimiaRuutuja=(kentanKoko*kentanKoko)-miinojenLukumaara;
+        
     }
     
     /**
