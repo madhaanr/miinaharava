@@ -31,6 +31,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     private SimpleDateFormat ajanMuoto = new SimpleDateFormat("mm:ss");
     private long alkuAika;
     JButton[][] miinaNappi;
+    JButton[][] nollaMiinaa;
     private HiiriKuuntelija hiiriKuuntelija;
     
     
@@ -134,6 +135,23 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
             }
             gridBagConstraints.gridy=0+i;        
         }
+     }
+    public void avaaKenttaaJosNolla(int koordinaattiX, int koordinaattiY) {
+       nollaMiinaa = new JButton[10][10];
+//       nollaMiinaa[][].setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
+//       miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
+       for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
+           for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
+               if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {   
+                   if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()==true) {   
+                       nollaMiinaa[i][j]=new JButton();
+                       nollaMiinaa[i][j].setBorder(null);
+                       nollaMiinaa[i][j].setMargin(new Insets(0,0,0,0));
+                       nollaMiinaa[i][j].setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());
+                   }
+               }
+           }
+       }
     }
     
     @Override
@@ -141,6 +159,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         if(e.getSource().equals(timer)) {
             naytaAikaa.setText(ajanMuoto.format(new Date(System.currentTimeMillis()-alkuAika)));
             miinojenLKM.setText(""+miinaKentta.getKentta().getMiinojenLukumaara());
+            
         }
         if(e.getSource().equals(uusiPeli)) {
             miinaKentta=new PeliLogiikka(kentanKoko);

@@ -77,42 +77,27 @@ public class HiiriKuuntelija implements MouseListener {
             }
            
             else if(naapuriRuutujenMiinojenLukumaara==0) {
-                JButton[][] miinaNappi = new JButton[10][10];
-                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
+//                JButton[][] miinaNappi = new JButton[10][10];
+//                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
                 miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
-                for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
-                    for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
-                        if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {
-                            if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()==true) {
-                                tamaNappi=miinaNappi[i][j];
-                                System.out.println(i+"::"+j);
-                                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());
-                            }
-                        }
-                    }
-                }
-            }
-//            else if(naapuriRuutujenMiinojenLukumaara==0) {
-//                JButton[][] miinaNappi = new JButton[koordinaattiX][koordinaattiY];
-//                System.out.println(naapuriRuutujenMiinojenLukumaara+" : ");
-////                miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
+                gui.avaaKenttaaJosNolla(koordinaattiX,koordinaattiY);
 //                for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
 //                    for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
-////                        miinaNappi[i][j]=  
-//                        if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {                
+//                        if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {
+//                            miinaNappi[i][j]=new JButton();
 //                            if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()==true) {
-////                                miinaNappi[i][j]=new JButton();                            
-////                                System.out.println(i+"::"+j);
-//                                miinaNappi[i][j].setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());
+//                                tamaNappi=miinaNappi[i][j];
+//                                System.out.println(i+"::"+j);
+//                                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());
+//                               
 //                            }
 //                        }
 //                    }
 //                }
-//            }
-            else {
+            }
+            else {        
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
-            }    
-            
+            }             
         }      
         gui.repaint();      
     }
