@@ -17,6 +17,7 @@ public class HiiriKuuntelija implements MouseListener {
     private PeliLogiikka miinaKentta;
     private GraafinenKayttoLiittyma gui;
     private Timer timer;
+    private int avoimiaRuutuja;
     
     public HiiriKuuntelija(GraafinenKayttoLiittyma gui, PeliLogiikka miinaKentta, int koordinaattiX, int koordinaattiY,Timer timer) {
         this.koordinaattiX=koordinaattiX;
@@ -53,28 +54,61 @@ public class HiiriKuuntelija implements MouseListener {
             }
         }
         if(SwingUtilities.isLeftMouseButton(e)) {
-            System.out.println(koordinaattiX+" : "+koordinaattiY);     
+//            System.out.println(koordinaattiX+" : "+koordinaattiY);
+            avoimiaRuutuja=miinaKentta.getKentta().getAvoimiaRuutuja();
+            --avoimiaRuutuja;
+            miinaKentta.getKentta().setAvoimiaRuutuja(avoimiaRuutuja);
+            System.out.println(avoimiaRuutuja);
             //jos osuu miinaan niin pelin pitää loppua
-           
+            
             int naapuriRuutujenMiinojenLukumaara = miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara();
-            if(naapuriRuutujenMiinojenLukumaara>8) {
+            if(naapuriRuutujenMiinojenLukumaara>=9) {
                 tamaNappi.setBackground(Color.red);
                 tamaNappi.setForeground(Color.black);
                 tamaNappi.setText("¤"); 
                 gui.peliOhi("Osuit miinaan!");
                 timer.stop();             
             }
+            
+            else if(avoimiaRuutuja==0) {
+                gui.peliOhi("Voitit!");
+                timer.stop();
+                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
+            }
+           
             else if(naapuriRuutujenMiinojenLukumaara==0) {
+                JButton[][] miinaNappi = new JButton[10][10];
+                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
                 miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
                 for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
                     for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
-                        if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()) {
-                            JButton thisNappi = (JButton) e.getSource(); 
-                            thisNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());
+                        if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {
+                            if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()==true) {
+                                tamaNappi=miinaNappi[i][j];
+                                System.out.println(i+"::"+j);
+                                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());
+                            }
                         }
                     }
                 }
             }
+//            else if(naapuriRuutujenMiinojenLukumaara==0) {
+//                JButton[][] miinaNappi = new JButton[koordinaattiX][koordinaattiY];
+//                System.out.println(naapuriRuutujenMiinojenLukumaara+" : ");
+////                miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
+//                for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
+//                    for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
+////                        miinaNappi[i][j]=  
+//                        if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {                
+//                            if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()==true) {
+////                                miinaNappi[i][j]=new JButton();                            
+////                                System.out.println(i+"::"+j);
+//                                miinaNappi[i][j].setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());
+//                            }
+//                        }
+//                    }
+//                }
+//            }
             else {
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
             }    

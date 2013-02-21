@@ -60,21 +60,21 @@ public class PeliLogiikka {
  * @return Palauttaa false jos ruudussa ei ole miinaa ja true jos ruudussa on miina.
  */
     public boolean onkoMiina(int koordinaattiX, int koordinaattiY) {
-//        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki() == true) {
-////            System.out.println("Ruutu on jo auki! Anna uudet koordinaatit.");
-//            return false;
-//        }
-//        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isMiina() == true) {
-////            System.out.println("Osuit miinaan! Peli Ohi!");
-//            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
-//            return true;
-//        } 
-//        else {
-//            System.out.println("Ei osunut");     
+        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki() == true) {
+            System.out.println("Ruutu on jo auki! Anna uudet koordinaatit.");
+            return false;
+        }
+        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isMiina() == true) {
+//            System.out.println("Osuit miinaan! Peli Ohi!");
+            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+            return true;
+        } 
+        else {
+            System.out.println("Ei osunut");     
             josOsuiNollaanAvaaPelikenttaa(koordinaattiX,koordinaattiY);
             kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
             return false;
-//        }
+        }
     }
 
 /**

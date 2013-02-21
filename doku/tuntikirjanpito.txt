@@ -13,5 +13,6 @@
 12.2.2013 Testejä lisätty. Graafisenkäyttöliittymän kehitys aloitettu 7 tuntia.
 14.2.2013 Ohjelma loogiikkaa korjattu. Tekstikäyttöliittymä viimeistelty. 2 tuntia.
 17.2.2013 Graafisenliittymän suunnittelua. 2 tuntia. Koodikatselmointi 2. 2 tuntia.
-19.2.2013 Graafisenkäyttöliittymän tekoa, erityisesti ikkunan tekoa(JPanel). 8 tuntia.
-20.2.2013 GUI actionlistener, mouselistener. 8 tunti.
+19.2.2013 Graafisenkäyttöliittymän tekoa, erityisesti ikkunan tekoa(JPanel). 8.5 tuntia.
+20.2.2013 GUI actionlistener, mouselistener. 9.5 tuntia.
+21.2.2013 GUIn tekoa. 2 tuntia.
