@@ -75,16 +75,18 @@ public class PeliLogiikka {
 //        else {
 //            System.out.println("Ei osunut");     
             josOsuiNollaanAvaaPelikenttaa(koordinaattiX,koordinaattiY);
-            int laskuri=0;
-            laskuri=kentta.getAvoimiaRuutuja();
             kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+                    
+            int laskuri=1;
+            System.out.println(laskuri+"::::::");
             for(int i=0;i<kentanKoko;++i) {
                 for(int j=0;j<kentanKoko;++j) {
                     if(kentta.getMiinaKentta()[i][j].isAuki()==true) {
-                        laskuri++;
+                        ++laskuri;
                     }
                 }
             }
+            System.out.println(laskuri+";;;;;;");
             kentta.setAvoimiaRuutuja(laskuri);
             return false;
 //        }
@@ -147,8 +149,7 @@ public class PeliLogiikka {
         
         if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()!=0) {
             return;
-        }
-                      
+        }                 
         for(int i=-1;i<2;++i) {
             for(int j=-1;j<2;++j) {
                 josOsuiNollaanAvaaPelikenttaa((koordinaattiX+i),(koordinaattiY+j));

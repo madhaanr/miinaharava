@@ -84,7 +84,7 @@ public class HiiriKuuntelija implements MouseListener {
                     }
                 }
             }
-            if(miinaKentta.getKentta().getAvoimiaRuutuja()==(miinaKentta.getKentanKoko()*miinaKentta.getKentanKoko())-miinaKentta.getKentta().getMiinojenLukumaara()) {
+            if(miinaKentta.getKentta().getAvoimiaRuutuja()==90) {
                 gui.peliOhi("Voitit!");
                 timer.stop();
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
