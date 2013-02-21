@@ -80,7 +80,7 @@ public class HiiriKuuntelija implements MouseListener {
 //                JButton[][] miinaNappi = new JButton[10][10];
 //                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
                 miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
-                gui.avaaKenttaaJosNolla(koordinaattiX,koordinaattiY);
+                gui.avaaKenttaaJosNolla(gui.gridBagConstraints,koordinaattiX,koordinaattiY);
 //                for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
 //                    for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
 //                        if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {

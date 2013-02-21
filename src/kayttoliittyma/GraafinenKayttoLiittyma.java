@@ -33,7 +33,8 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     JButton[][] miinaNappi;
     JButton[][] nollaMiinaa;
     private HiiriKuuntelija hiiriKuuntelija;
-    
+    GridBagLayout gridBagLayout;
+    GridBagConstraints gridBagConstraints;
     
     public GraafinenKayttoLiittyma() {
         miinaKentta = new PeliLogiikka(kentanKoko);
@@ -47,7 +48,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         setPreferredSize(new Dimension(380,460));  
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        GridBagLayout gridBagLayout = new GridBagLayout();      
+             
         paaIkkuna = new JPanel();
         ylaRiviIkkuna = new JPanel();
         peliKenttaIkkuna = new JPanel();
@@ -56,8 +57,8 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         peliKenttaIkkuna.setLayout(gridBagLayout);
         paaIkkuna.add(peliKenttaIkkuna);
         paaIkkuna.add(alaRiviIkkuna);
-        
-        GridBagConstraints gridBagConstraints = new GridBagConstraints();
+        gridBagLayout = new GridBagLayout(); 
+        gridBagConstraints = new GridBagConstraints();
         
         uusiPeli();
         naytaAikaa();
@@ -136,7 +137,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
             gridBagConstraints.gridy=0+i;        
         }
      }
-    public void avaaKenttaaJosNolla(int koordinaattiX, int koordinaattiY) {
+    public void avaaKenttaaJosNolla(GridBagConstraints gridBagConstraints,int koordinaattiX, int koordinaattiY) {
        nollaMiinaa = new JButton[10][10];
 //       nollaMiinaa[][].setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
 //       miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
@@ -148,6 +149,9 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
                        nollaMiinaa[i][j].setBorder(null);
                        nollaMiinaa[i][j].setMargin(new Insets(0,0,0,0));
                        nollaMiinaa[i][j].setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());
+                       hiiriKuuntelija = new HiiriKuuntelija(this, miinaKentta,koordinaattiX, koordinaattiY,timer);
+                       nollaMiinaa[i][j].addMouseListener(hiiriKuuntelija);
+                       paaIkkuna.add(nollaMiinaa[i][j],gridBagConstraints);
                    }
                }
            }
