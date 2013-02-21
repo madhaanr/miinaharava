@@ -38,7 +38,7 @@ public class Kentta {
                 miinaKentta[i][j]=new Ruutu();
             }
         }
-        avoimiaRuutuja=(kentanKoko*kentanKoko)-miinojenLukumaara;
+        avoimiaRuutuja=0;
         
     }
     

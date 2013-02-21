@@ -15,4 +15,4 @@
 17.2.2013 Graafisenliittymän suunnittelua. 2 tuntia. Koodikatselmointi 2. 2 tuntia.
 19.2.2013 Graafisenkäyttöliittymän tekoa, erityisesti ikkunan tekoa(JPanel). 8.5 tuntia.
 20.2.2013 GUI actionlistener, mouselistener. 9.5 tuntia.
-21.2.2013 GUIn tekoa. 3 tuntia.
+21.2.2013 GUIn tekoa, Demo. 6 tuntia.

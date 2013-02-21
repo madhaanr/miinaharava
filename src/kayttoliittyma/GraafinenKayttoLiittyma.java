@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -54,11 +55,12 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         peliKenttaIkkuna = new JPanel();
         alaRiviIkkuna = new JPanel();
         paaIkkuna.add(ylaRiviIkkuna);
+        gridBagLayout = new GridBagLayout(); 
+        gridBagConstraints = new GridBagConstraints();
         peliKenttaIkkuna.setLayout(gridBagLayout);
         paaIkkuna.add(peliKenttaIkkuna);
         paaIkkuna.add(alaRiviIkkuna);
-        gridBagLayout = new GridBagLayout(); 
-        gridBagConstraints = new GridBagConstraints();
+       
         
         uusiPeli();
         naytaAikaa();
@@ -75,7 +77,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
     public void uusiPeli() {
         uusiPeli = new JButton("Uusi Peli");
         uusiPeli.setPreferredSize(new Dimension(100,30));
-        uusiPeli.setMargin(new Insets(0,0,0,0));
+//        uusiPeli.setMargin(new Insets(1,1,1,1));
         uusiPeli.setBorder(null);
         uusiPeli.setFont(new Font("Times New Roman",Font.PLAIN, 20));
         ylaRiviIkkuna.add(uusiPeli,BorderLayout.WEST);
@@ -99,7 +101,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         miinojenLKM.setPreferredSize(new Dimension(50,30));
         miinojenLKM.addMouseListener(hiiriKuuntelija);
         miinojenLKM.setText(""+miinaKentta.getKentta().getMiinojenLukumaara());
-        ylaRiviIkkuna.add(miinojenLKM,BorderLayout.EAST);
+        ylaRiviIkkuna.add(miinojenLKM,BorderLayout.NORTH);
     }
     
     public void peliOhi(String tilanne) {
@@ -107,18 +109,18 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         peliOhi.setPreferredSize(new Dimension(360,30));
         peliOhi.setBorder(null);
         peliOhi.setText(tilanne);
-        alaRiviIkkuna.add(peliOhi);       
+        alaRiviIkkuna.add(peliOhi,BorderLayout.WEST);       
     }
     
     public void miinaNappi(GridBagConstraints gridBagConstraints) {
         miinaNapit=new JButton[kentanKoko][kentanKoko];
-        gridBagConstraints.fill = GridBagConstraints.BOTH;
-        gridBagConstraints.weightx=0.1;
-        gridBagConstraints.weighty=1.0;
-        gridBagConstraints.gridy=0;
-        gridBagConstraints.gridx=0;
-        gridBagConstraints.ipadx=0;
-        gridBagConstraints.ipady=0;
+//        gridBagConstraints.fill = GridBagConstraints.BOTH;
+//        gridBagConstraints.weightx=1.0;
+//        gridBagConstraints.weighty=1.0;
+//        gridBagConstraints.gridy=0;
+//        gridBagConstraints.gridx=0;
+//        gridBagConstraints.ipadx=0;
+//        gridBagConstraints.ipady=0;
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {       
                 miinaNapit[i][j]=new JButton();
@@ -138,7 +140,6 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
        
      }
     public void avaaKenttaaJosNolla(GridBagConstraints gridBagConstraints) {
-//        miinaNapit = new JButton[kentanKoko][kentanKoko];
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.weightx=0.1;
         gridBagConstraints.weighty=1.0;
@@ -146,14 +147,13 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         gridBagConstraints.gridx=0;
         gridBagConstraints.ipadx=0;
         gridBagConstraints.ipady=0;
-    //       nollaMiinaa[][].setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
-    //       miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
         for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
            for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
                if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {   
                    if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()==true) {   
                        miinaNapit[i][j].setBorder(null);
-                       miinaNapit[i][j].setMargin(new Insets(0,0,0,0));
+                       miinaNapit[i][j].setMargin(new Insets(1,1,1,1));
+                       miinaNapit[i][j].setFont(new Font("Times New Roman",Font.PLAIN, 20));
                        miinaNapit[i][j].setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());  
                        gridBagConstraints.gridx=0+j;
                    }

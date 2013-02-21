@@ -11,20 +11,22 @@ public class PeliLogiikka {
 
     private Kentta kentta;
     private int kentanKoko;
+   
     
     public PeliLogiikka(int kentanKoko) {
         this.kentanKoko=kentanKoko;
         kentta = new Kentta(this.kentanKoko);
         kentta.luoKentta();
+       
     }
 
     public Kentta getKentta() {
         return kentta;
     }
-//
-//    public int getKentanKoko() {
-//        return kentanKoko;
-//    }
+
+    public int getKentanKoko() {
+        return kentanKoko;
+    }
 /**
  * Metodi tulostaa miinakentän tekstikäyttöliittymälle..
  */    
@@ -64,18 +66,28 @@ public class PeliLogiikka {
 //        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki() == true) {
 //            System.out.println("Ruutu on jo auki! Anna uudet koordinaatit.");
 //            return false;
-//        }
-        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isMiina() == true) {
-//            System.out.println("Osuit miinaan! Peli Ohi!");
-            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
-            return true;
-        } 
-        else {
+////        }
+//        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isMiina() == true) {
+////            System.out.println("Osuit miinaan! Peli Ohi!");
+//            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+//            return true;
+//        } 
+//        else {
 //            System.out.println("Ei osunut");     
             josOsuiNollaanAvaaPelikenttaa(koordinaattiX,koordinaattiY);
+            int laskuri=0;
+            laskuri=kentta.getAvoimiaRuutuja();
             kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+            for(int i=0;i<kentanKoko;++i) {
+                for(int j=0;j<kentanKoko;++j) {
+                    if(kentta.getMiinaKentta()[i][j].isAuki()==true) {
+                        laskuri++;
+                    }
+                }
+            }
+            kentta.setAvoimiaRuutuja(laskuri);
             return false;
-        }
+//        }
     }
 
 /**
@@ -124,15 +136,14 @@ public class PeliLogiikka {
  * @param koordinaattiY pystykoordinaatti.
  */
     public void josOsuiNollaanAvaaPelikenttaa(int koordinaattiX, int koordinaattiY) {
-
+        
         if(koordinaattiX<0 || koordinaattiY<0 || koordinaattiX>=kentanKoko || koordinaattiY>=kentanKoko) {
             return;
         }
         if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki()) {
             return;
         } 
-        kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
-        kentta.setAvoimiaRuutuja(kentta.getAvoimiaRuutuja()-1);
+        kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);   
         
         if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()!=0) {
             return;

@@ -17,7 +17,6 @@ public class HiiriKuuntelija implements MouseListener {
     private PeliLogiikka miinaKentta;
     private GraafinenKayttoLiittyma gui;
     private Timer timer;
-    private int avoimiaRuutuja;
     
     public HiiriKuuntelija(GraafinenKayttoLiittyma gui, PeliLogiikka miinaKentta, int koordinaattiX, int koordinaattiY,Timer timer) {
         this.koordinaattiX=koordinaattiX;
@@ -54,10 +53,7 @@ public class HiiriKuuntelija implements MouseListener {
             }
         }
         if(SwingUtilities.isLeftMouseButton(e)) {
-//            System.out.println(koordinaattiX+" : "+koordinaattiY);
-//             avoimiaRuutuja=miinaKentta.getKentta().getAvoimiaRuutuja();
-//             --avoimiaRuutuja;
-//             miinaKentta.getKentta().setAvoimiaRuutuja(avoimiaRuutuja);
+            
             System.out.println(miinaKentta.getKentta().getAvoimiaRuutuja());
         
             int naapuriRuutujenMiinojenLukumaara = miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara();
@@ -72,7 +68,7 @@ public class HiiriKuuntelija implements MouseListener {
             }
            
             if(naapuriRuutujenMiinojenLukumaara==0) {
-                JButton[][] miinaNappi = new JButton[10][10];
+                JButton[][] miinaNappi = new JButton[miinaKentta.getKentanKoko()][miinaKentta.getKentanKoko()];
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
                 miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
                 gui.avaaKenttaaJosNolla(gui.gridBagConstraints);
@@ -88,12 +84,13 @@ public class HiiriKuuntelija implements MouseListener {
                     }
                 }
             }
-           if(miinaKentta.getKentta().getAvoimiaRuutuja()==0) {
+            if(miinaKentta.getKentta().getAvoimiaRuutuja()==(miinaKentta.getKentanKoko()*miinaKentta.getKentanKoko())-miinaKentta.getKentta().getMiinojenLukumaara()) {
                 gui.peliOhi("Voitit!");
                 timer.stop();
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
             }
-            else {        
+            else {    
+                miinaKentta.getKentta().setAvoimiaRuutuja(miinaKentta.getKentta().getAvoimiaRuutuja()+1);
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
             }             
         }      
