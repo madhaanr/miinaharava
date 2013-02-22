@@ -1,0 +1,17 @@
+Miinaharavan käyttöohje
+
+Kun peli käynnistetään on peli heti pelattavissa.
+Pelikentän koko on kiinteä 10*10 ruudukko ja siihen on arvottu 20 miinaa.
+
+Hiiren vasemmalla napilla avaat ruutuja.
+Hiiren oikealla napilla voit merkitä ruudun jossa oletat olevan miinan, laskuri
+joka kertoo monta miinaa olet merkinnyt on miinakentän oikeassa yläkulmassa.
+Jos osut ruutuun jonka viereisissä ruuduissa ei ole miinaa eli kentälle tulee 
+kyseiseen ruutuun nolla, niin peli avaa ruudukkoa automaattisesti.
+
+Peli loppuu jos osut miinaan tai saat avattua kaikki miinattomat ruudut.
+Pelissä on tarkoitus avata ruudut mahdollisimman nopeasti.
+Uusi peli painikkeesta saat aloitettua uuden pelin jos vanha loppui tai muuten
+vain haluat uuden pelin.
+
+Antoisia peli hetkiä miinaharavan parissa!

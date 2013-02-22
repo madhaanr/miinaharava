@@ -12,10 +12,26 @@ public class PeliLogiikka {
     private Kentta kentta;
     private int kentanKoko;
    
+    /**
+     * Luokan normaali konstruktori. 
+     * @param kentanKoko 
+     */
     public PeliLogiikka(int kentanKoko) {
         this.kentanKoko=kentanKoko;
         kentta = new Kentta(this.kentanKoko);
         kentta.luoKentta();     
+    }
+    
+    /**
+     * Konstruktori jossa miinojen lukumäärä voidaan asettaa itse. 
+     * Automaattinen miinojen arvonta poistettu testausta varten.
+     * Käytössä ainoastaan testeissä.
+     * @param kentanKoko
+     * @param miinojenLKM 
+     */
+    public PeliLogiikka(int kentanKoko, int miinojenLKM) {
+        this.kentanKoko=kentanKoko;
+        kentta = new Kentta(this.kentanKoko, miinojenLKM);   
     }
 
     public Kentta getKentta() {

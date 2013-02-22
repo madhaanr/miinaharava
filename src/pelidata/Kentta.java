@@ -40,8 +40,8 @@ public class Kentta {
         this.avoimiaRuutuja=0;       
     }
     
-    /**
-     * Käyttämätön konstruktori jolle voi parametrina asettaa miinojen lukumäärän. 
+    /** 
+     * Testeissä käytettävä konstruktori jolle voi parametrina asettaa miinojen lukumäärän. 
      * @param kentanKoko
      * @param miinojenLKM 
      */

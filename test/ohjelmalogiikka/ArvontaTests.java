@@ -35,9 +35,19 @@ public class ArvontaTests {
             }
         }
     }
-    
     @Test
-    public void miinaArvotaan() {
+    public void eiArvotaMiinaaKenttaTyhja() {
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                if(miinaKentta[i][j].isMiina()) {
+                    ++miinoja;
+                }
+            }
+        }
+        assertEquals(0,miinoja);
+    }
+    @Test
+    public void yksiMiinaArvotaan() {
         miinaKentta=arvonta.miinojenArpoja(miinaKentta);
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
