@@ -15,3 +15,12 @@ Uusi peli painikkeesta saat aloitettua uuden pelin jos vanha loppui tai muuten
 vain haluat uuden pelin.
 
 Antoisia peli hetkiä miinaharavan parissa!
+
+
+Ongelmia:
+Näytön resoluutio vaikuttaa siihen miten hyvin miinakenttä sopii sille varattuun tilaan. 
+Olen kehittänyt peliä pääasiassa luokassa B221, jossa se näyttää ok:lta. Pika korjaus jos
+kaikki 10*10 taulukon rivit ei mahdu ruutuun muuta näitä arvoja: 
+GraafinenKäyttöLiittymä.java->alustaKomponentit->setPreferredSize(new Dimension(380,460)); 
+Käyttöliittymässä ja hiirikuuntelijassa on jonkin verran turhaa koodia, 
+koska en oikeasti käytä gridbaglayoutia.

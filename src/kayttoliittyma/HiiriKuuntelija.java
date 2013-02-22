@@ -23,14 +23,13 @@ public class HiiriKuuntelija implements MouseListener {
     private Timer timer;
     
     /**
-     * Kostruktori
+     * Kostruktori hiirikuuntelijalle.
      * @param gui GraafinenKäyttöLiittymä.
      * @param miinaKentta Käyttöliittymässä luotu miinaKentta.
      * @param koordinaattiX
      * @param koordinaattiY
      * @param timer Pelin kestoa seuraava timer.
-     */
-    
+     */ 
     public HiiriKuuntelija(GraafinenKayttoLiittyma gui, PeliLogiikka miinaKentta, int koordinaattiX, int koordinaattiY,Timer timer) {
         this.koordinaattiX=koordinaattiX;
         this.koordinaattiY=koordinaattiY;
