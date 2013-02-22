@@ -16,3 +16,4 @@
 19.2.2013 Graafisenkäyttöliittymän tekoa, erityisesti ikkunan tekoa(JPanel). 8.5 tuntia.
 20.2.2013 GUI actionlistener, mouselistener. 9.5 tuntia.
 21.2.2013 GUIn tekoa, Demo. 6 tuntia.
+22.2.2013 Ohjelman viimeistely, luokkakaavio, sekvenssikaavio, lisää testejä. 

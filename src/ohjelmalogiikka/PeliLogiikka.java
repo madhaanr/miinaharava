@@ -12,12 +12,10 @@ public class PeliLogiikka {
     private Kentta kentta;
     private int kentanKoko;
    
-    
     public PeliLogiikka(int kentanKoko) {
         this.kentanKoko=kentanKoko;
         kentta = new Kentta(this.kentanKoko);
-        kentta.luoKentta();
-       
+        kentta.luoKentta();     
     }
 
     public Kentta getKentta() {
@@ -27,9 +25,9 @@ public class PeliLogiikka {
     public int getKentanKoko() {
         return kentanKoko;
     }
-/**
- * Metodi tulostaa miinakentän tekstikäyttöliittymälle..
- */    
+    /**
+     * Metodi tulostaa miinakentän tekstikäyttöliittymälle.
+     */    
     public void tulostaKentta() {
         for (int i = 0; i < kentta.getKentanKoko(); ++i) {
             for (int j = 0; j < kentta.getKentanKoko(); ++j) {
@@ -43,45 +41,35 @@ public class PeliLogiikka {
         }
     }
     /**
-     * Metodi pelikentän tulostamiseen graafiseen käyttöliittymään.
+     * Metodi onkoMiina tarkistaa onko pelaajan valitsemissa koordinaateissa sijaitse-
+     * vassa peliruudussa miina. Tekstikäyttöliittymään liittyvää koodia kommentoitu pois.
+     * @param koordinaattiX 
+     * @param koordinaattiY
+     * @return Palauttaa false jos ruudussa ei ole miinaa ja true jos ruudussa on miina.
      */
-    public void tulostaKenttaGUI() {
-         for(int i=0;i<kentanKoko;++i) {
-             for(int j=0;j<kentanKoko;++j) {
-                 if(kentta.getMiinaKentta()[i][j].isAuki()==true) {
-                     kentta.getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara();
-                 }
-             }
-         }
-     }
-/**
- * Metodi onkoMiina tarkistaa onko pelaajan valitsemissa koordinaateissa sijaitse-
- * vassa peliruudussa miina.
- * @param koordinaattiX Ruudun x koordinaatti eli vaakasuunnan koordinaatti.
- * @param koordinaattiY Ruudun y koordinaatti eli pystysuunnan koordinaatti.
- * @return Palauttaa false jos ruudussa ei ole miinaa ja true jos ruudussa on miina.
- */
     public boolean onkoMiina(int koordinaattiX, int koordinaattiY) {
-        //tekstiliittymän juttuja.
-//        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki() == true) {
+        //tekstiliittymän juttuja kommentoitu pois.
+        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki() == true) {
 //            System.out.println("Ruutu on jo auki! Anna uudet koordinaatit.");
-//            return false;
-////        }
-//        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isMiina() == true) {
-////            System.out.println("Osuit miinaan! Peli Ohi!");
-//            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
-//            return true;
-//        } 
-//        else {
-//            System.out.println("Ei osunut");     
-            josOsuiNollaanAvaaPelikenttaa(koordinaattiX,koordinaattiY);
+            return false;
+        }
+        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isMiina() == true) {
+//            System.out.println("Osuit miinaan! Peli Ohi!");
+            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+            return true;
+        } 
+        else {
+//            System.out.println("Ei osunut");   
+            
+            avaaMiinaKenttaa(koordinaattiX,koordinaattiY);
+
             kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
                     
-            int laskuri=1;
+            int laskuri=0;
             System.out.println(laskuri+"::::::");
             for(int i=0;i<kentanKoko;++i) {
                 for(int j=0;j<kentanKoko;++j) {
-                    if(kentta.getMiinaKentta()[i][j].isAuki()==true) {
+                    if(kentta.getMiinaKentta()[i][j].isAuki()) {
                         ++laskuri;
                     }
                 }
@@ -89,7 +77,7 @@ public class PeliLogiikka {
             System.out.println(laskuri+";;;;;;");
             kentta.setAvoimiaRuutuja(laskuri);
             return false;
-//        }
+        }
     }
 
 /**
@@ -134,10 +122,10 @@ public class PeliLogiikka {
 /**
  * Metodi avaa lisää pelikenttää näkyville jos metodi getNaapuriRuutujenMiinojenLukumaara 
  * palauttaa arvon 0.
- * @param koordinaattiX vaakakoordinaatti.
- * @param koordinaattiY pystykoordinaatti.
+ * @param koordinaattiX 
+ * @param koordinaattiY 
  */
-    public void josOsuiNollaanAvaaPelikenttaa(int koordinaattiX, int koordinaattiY) {
+    public void avaaMiinaKenttaa(int koordinaattiX, int koordinaattiY) {
         
         if(koordinaattiX<0 || koordinaattiY<0 || koordinaattiX>=kentanKoko || koordinaattiY>=kentanKoko) {
             return;
@@ -146,13 +134,13 @@ public class PeliLogiikka {
             return;
         } 
         kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);   
-        
+       
         if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()!=0) {
             return;
         }                 
         for(int i=-1;i<2;++i) {
             for(int j=-1;j<2;++j) {
-                josOsuiNollaanAvaaPelikenttaa((koordinaattiX+i),(koordinaattiY+j));
+                avaaMiinaKenttaa((koordinaattiX+i),(koordinaattiY+j));
             }
         }
     }

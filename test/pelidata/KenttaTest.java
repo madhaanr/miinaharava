@@ -4,11 +4,8 @@
  */
 package pelidata;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -18,39 +15,29 @@ import org.junit.Test;
 public class KenttaTest {
 
     private Kentta miinaKentta;
-
+    private int miinojenLKM;
+    
     public KenttaTest() {
     }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
+    
     @Before
     public void setUp() {
-        
+        miinaKentta = new Kentta(15);
+        miinojenLKM = 15;
     }
-
-    @After
-    public void tearDown() {
+    @Test
+    public void avoimiaRuutuja() {
+        assertEquals(0,miinaKentta.getAvoimiaRuutuja());
     }
-//     TODO add test methods here.
-//     The methods must be annotated with annotation @Test. For example:
-//    
-
     @Test
     public void konstruktoriAsettaaKentanKoonOikein() {
-        miinaKentta = new Kentta(10);
-        assertEquals("kentanKoko: 10", miinaKentta.toString());
+        Kentta miinaKentta2 = new Kentta(10);
+        assertEquals("kentanKoko: 10", miinaKentta2.toString());
     }
-
     @Test
     public void konstruktoriEiAsetaLiianPientaKenttaa() {
-        miinaKentta = new Kentta(2);
-        assertEquals("kentanKoko: 3", miinaKentta.toString());
+        Kentta miinaKentta3= new Kentta(2);
+        assertEquals("kentanKoko: 3", miinaKentta3.toString());
     }
+   
 }

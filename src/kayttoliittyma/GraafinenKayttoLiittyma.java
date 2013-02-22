@@ -20,6 +20,11 @@ import javax.swing.Timer;
 import ohjelmalogiikka.PeliLogiikka;
 
 /* @author mhaanran */
+/**
+ * GraafinenKäyttöLiittymä toteutetaan tässä luokassa. 
+ * @author mhaanran
+ */
+
 public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
 
     private JPanel paaIkkuna, ylaRiviIkkuna, peliKenttaIkkuna,alaRiviIkkuna;
@@ -44,11 +49,14 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         this.koordinaattiY=0;
     }   
     
+    /**
+     * Metodi alustaKomponentit luo käyttöliittymä ikkunan.
+     */
+    
     public void alustaKomponentit() {      
         setTitle("Miinaharava");
         setPreferredSize(new Dimension(380,460));  
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+        setDefaultCloseOperation(EXIT_ON_CLOSE);     
              
         paaIkkuna = new JPanel();
         ylaRiviIkkuna = new JPanel();
@@ -66,7 +74,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         naytaAikaa();
         naytaMiinojenLKM();  
         peliOhi("");
-        miinaNappi(gridBagConstraints);
+        miinaNapit(gridBagConstraints);
         
         setContentPane(paaIkkuna);
         setResizable(false);
@@ -74,16 +82,23 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    /**
+     * uusiPeli metodi luo JButtonin josta voi aloittaa uuden miinaharava pelin.
+     * Button sijoitetaan ylaRiviIkkunan JPaneliin.
+     */  
     public void uusiPeli() {
         uusiPeli = new JButton("Uusi Peli");
         uusiPeli.setPreferredSize(new Dimension(100,30));
-//        uusiPeli.setMargin(new Insets(1,1,1,1));
         uusiPeli.setBorder(null);
         uusiPeli.setFont(new Font("Times New Roman",Font.PLAIN, 20));
         ylaRiviIkkuna.add(uusiPeli,BorderLayout.WEST);
         uusiPeli.addActionListener(this);
     }
 
+    /**
+     * naytaAika metodi toteuttaa JLabelin jossa näytetään miten pitkään peli 
+     * on ollut käynnissä.
+     */  
     public void naytaAikaa() {
         naytaAikaa = new JLabel();
         naytaAikaa.setPreferredSize(new Dimension(200,30));
@@ -96,14 +111,22 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         ylaRiviIkkuna.add(naytaAikaa);
     }
         
+    /**
+     * naytaMiinojenLKM on JLabel kenttä jossa näytetään miten monta 
+     * merkkaamatonta miina pelikentällä on.
+     */
     public void naytaMiinojenLKM() {
         miinojenLKM=new JLabel();
         miinojenLKM.setPreferredSize(new Dimension(50,30));
         miinojenLKM.addMouseListener(hiiriKuuntelija);
-        miinojenLKM.setText(""+miinaKentta.getKentta().getMiinojenLukumaara());
+        miinojenLKM.setText(""+miinaKentta.getKentta().getMiinojenLKM());
         ylaRiviIkkuna.add(miinojenLKM,BorderLayout.NORTH);
     }
     
+    /**
+     * metodi tulostaa tekstin joka kertoo pelin päättymisestä. Joko
+     * osuttaessa miinaan tai kun kaikki miinattomat ruudut on avattu.
+     */
     public void peliOhi(String tilanne) {
         peliOhi = new JLabel();
         peliOhi.setPreferredSize(new Dimension(360,30));
@@ -111,8 +134,11 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         peliOhi.setText(tilanne);
         alaRiviIkkuna.add(peliOhi,BorderLayout.WEST);       
     }
-    
-    public void miinaNappi(GridBagConstraints gridBagConstraints) {
+    /**
+     * miinaNapit metodi luo JButtonin jokaiselle miinaKentän alkiolle.
+     * @param gridBagConstraints 
+     */
+    public void miinaNapit(GridBagConstraints gridBagConstraints) {
         miinaNapit=new JButton[kentanKoko][kentanKoko];
 //        gridBagConstraints.fill = GridBagConstraints.BOTH;
 //        gridBagConstraints.weightx=1.0;
@@ -139,6 +165,13 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         }
        
      }
+    
+    /**
+     * avaaKenttaaJosNolla metodi päivittää kentän tilanteen jos osutaan
+     * ruutuun jonka naapuriRuutujenMiinojenLukumäärä muuttujan arvo on
+     * nolla.
+     * @param gridBagConstraints 
+     */
     public void avaaKenttaaJosNolla(GridBagConstraints gridBagConstraints) {
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.weightx=0.1;
@@ -163,11 +196,17 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
         }
     }
     
+    /**
+     * Kuuntelija joka päivittää peliin käytettyä aikaa sekä miinojenLKM
+     * ruutua sekä toteuttaa uusi peli nappulan klikkaamisesta seuraavat
+     * toimenpiteet.
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(timer)) {
             naytaAikaa.setText(ajanMuoto.format(new Date(System.currentTimeMillis()-alkuAika)));
-            miinojenLKM.setText(""+miinaKentta.getKentta().getMiinojenLukumaara());
+            miinojenLKM.setText(""+miinaKentta.getKentta().getMiinojenLKM());
             
         }
         if(e.getSource().equals(uusiPeli)) {

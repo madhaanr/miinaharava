@@ -10,13 +10,26 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import ohjelmalogiikka.PeliLogiikka;
 
-/* @author mhaanran */
+/**
+ * HiiriKuuntelija luokka kuuntelee hiiren nappien painalluksia ja
+ * päivittää GUIta tarpeen mukaisesti.
+ * @author mhaanran
+ */
 public class HiiriKuuntelija implements MouseListener {
 
     private int koordinaattiX, koordinaattiY;
     private PeliLogiikka miinaKentta;
     private GraafinenKayttoLiittyma gui;
     private Timer timer;
+    
+    /**
+     * Kostruktori
+     * @param gui GraafinenKäyttöLiittymä.
+     * @param miinaKentta Käyttöliittymässä luotu miinaKentta.
+     * @param koordinaattiX
+     * @param koordinaattiY
+     * @param timer Pelin kestoa seuraava timer.
+     */
     
     public HiiriKuuntelija(GraafinenKayttoLiittyma gui, PeliLogiikka miinaKentta, int koordinaattiX, int koordinaattiY,Timer timer) {
         this.koordinaattiX=koordinaattiX;
@@ -26,6 +39,13 @@ public class HiiriKuuntelija implements MouseListener {
         this.timer=timer;
     }
     
+    /**
+     * Hiiren napin painallusten kuuntelija metodi. Jossa erikseen
+     * käsitellään ensin hiiren oikean napin aiheuttamat toimenpiteet ja sen jälkeen
+     * hiiren vasemman napin klikkausten aiheuttamat toimenpiteet sekä päivitetään 
+     * GUIta tarpeen mukaisesti.
+     * @param e 
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         JButton tamaNappi = (JButton) e.getSource(); 
@@ -38,18 +58,18 @@ public class HiiriKuuntelija implements MouseListener {
                 tamaNappi.setBackground(Color.BLACK);
                 tamaNappi.setForeground(Color.WHITE);
                 tamaNappi.setText("M");
-                int miinojenLukumaara = miinaKentta.getKentta().getMiinojenLukumaara();
+                int miinojenLukumaara = miinaKentta.getKentta().getMiinojenLKM();
                 miinojenLukumaara-=1;
-                miinaKentta.getKentta().setMiinojenLukumaara(miinojenLukumaara);          
+                miinaKentta.getKentta().setMiinojenLKM(miinojenLukumaara);          
             }
             else {
                 miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].setMerkattu(false);
                 tamaNappi.setBackground(Color.green);
                 tamaNappi.setText("");
                 tamaNappi.setForeground(Color.BLACK);
-                int miinojenLukumaara = miinaKentta.getKentta().getMiinojenLukumaara();
+                int miinojenLukumaara = miinaKentta.getKentta().getMiinojenLKM();
                 miinojenLukumaara+=1;
-                miinaKentta.getKentta().setMiinojenLukumaara(miinojenLukumaara);
+                miinaKentta.getKentta().setMiinojenLKM(miinojenLukumaara);
             }
         }
         if(SwingUtilities.isLeftMouseButton(e)) {
@@ -76,7 +96,7 @@ public class HiiriKuuntelija implements MouseListener {
                     for(int j=0;j<miinaKentta.getKentta().getKentanKoko();++j) {
                         if(koordinaattiX>=0 && koordinaattiY>=0 && koordinaattiX<miinaKentta.getKentta().getKentanKoko() && koordinaattiY<miinaKentta.getKentta().getKentanKoko()) {
                             miinaNappi[i][j]=new JButton();
-                            if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()==true) {
+                            if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()) {
                                 tamaNappi=miinaNappi[i][j];
                                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());  
                             }
@@ -84,20 +104,24 @@ public class HiiriKuuntelija implements MouseListener {
                     }
                 }
             }
-            if(miinaKentta.getKentta().getAvoimiaRuutuja()==90) {
+            if(miinaKentta.getKentta().getAvoimiaRuutuja()==80) {
                 gui.peliOhi("Voitit!");
                 timer.stop();
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
             }
             else {    
+                miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
                 miinaKentta.getKentta().setAvoimiaRuutuja(miinaKentta.getKentta().getAvoimiaRuutuja()+1);
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
             }             
-        }      
-        
-        
+        }             
         gui.repaint();      
     }
+    
+    /**
+     * metodit jotka piti "toteuttaa" MouseListenerin implementoinnin takia.
+     * @param e 
+     */
 
     @Override
     public void mousePressed(MouseEvent e) {

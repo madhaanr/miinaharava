@@ -11,7 +11,7 @@ import ohjelmalogiikka.Arvonta;
 public class Kentta {
 
     private int kentanKoko;
-    private int miinojenLukumaara;
+    private int miinojenLKM;
     private int avoimiaRuutuja;
     private Ruutu[][] miinaKentta;   
     private Arvonta arvonta;
@@ -30,7 +30,7 @@ public class Kentta {
         }
         this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
         
-        this.miinojenLukumaara=(kentanKoko*kentanKoko)/10;
+        this.miinojenLKM=(kentanKoko*kentanKoko)/5;
         
         arvonta=new Arvonta(kentanKoko); 
         for(int i=0;i<kentanKoko;++i) {
@@ -38,14 +38,13 @@ public class Kentta {
                 miinaKentta[i][j]=new Ruutu();
             }
         }
-        avoimiaRuutuja=0;
-        
+        avoimiaRuutuja=0;       
     }
     
     /**
-     * Käyttämätön konstruktori jolla voisi itse säätää miinojen lukumäärän. 
+     * Käyttämätön konstruktori jolle voi parametrina asettaa miinojen lukumäärän. 
      * @param kentanKoko
-     * @param miinojenLukumaara 
+     * @param miinojenLKM 
      */
     
     public Kentta(int kentanKoko, int miinojenLukumaara) {
@@ -56,7 +55,7 @@ public class Kentta {
             this.kentanKoko=3;
         }
         this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
-        this.miinojenLukumaara=miinojenLukumaara;
+        this.miinojenLKM=miinojenLukumaara;
         
         arvonta=new Arvonta(kentanKoko);
         for(int i=0;i<kentanKoko;++i) {
@@ -64,19 +63,18 @@ public class Kentta {
                 miinaKentta[i][j]=new Ruutu();
             }
         }
-        avoimiaRuutuja=(kentanKoko*kentanKoko)-miinojenLukumaara;
+        avoimiaRuutuja=0;
     }
     
     /**
-     * Metodi luo miinakenttän ja arpoo siihen halutun määrän miinoja.
+     * Metodi luo miinakentän ja arpoo siihen halutun määrän miinoja.
      */
     public void luoKentta() {
-        for(int i=0;i<miinojenLukumaara;++i) {
+        for(int i=0;i<miinojenLKM;++i) {
             miinaKentta=arvonta.miinojenArpoja(miinaKentta);
         }
     }
-    
-    
+      
     public int getAvoimiaRuutuja() {
         return avoimiaRuutuja;
     }
@@ -93,12 +91,12 @@ public class Kentta {
         this.kentanKoko = kentanKoko;
     }
 
-    public int getMiinojenLukumaara() {
-        return miinojenLukumaara;
+    public int getMiinojenLKM() {
+        return miinojenLKM;
     }
 
-    public void setMiinojenLukumaara(int miinojenLukumaara) {
-        this.miinojenLukumaara = miinojenLukumaara;
+    public void setMiinojenLKM(int miinojenLKM) {
+        this.miinojenLKM = miinojenLKM;
     }
 
     public Ruutu[][] getMiinaKentta() {

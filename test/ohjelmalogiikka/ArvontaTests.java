@@ -24,7 +24,7 @@ public class ArvontaTests {
     
     @Before
     public void setUp() {
-        kentanKoko=5;
+        kentanKoko=10;
         arvonta = new Arvonta(kentanKoko);
         miinaKentta = new Ruutu[kentanKoko][kentanKoko];
         for(int i=0;i<kentanKoko;++i) {
@@ -36,7 +36,7 @@ public class ArvontaTests {
     
      @Test
      public void miinaKenttallaOnYlarajaKoko() {  
-         assertNotNull(miinaKentta[4][4]);
+         assertNotNull(miinaKentta[9][9]);
      }
      @Test
      public void miinaKenttallaOnAlaRajaKoko() {  
@@ -47,4 +47,5 @@ public class ArvontaTests {
          miinaKentta=arvonta.miinojenArpoja(miinaKentta);
          assertNotNull(miinaKentta);
      }
+    
 }

@@ -5,7 +5,7 @@ import kayttoliittyma.TekstiKayttoLiittyma;
 
 /* @author mhaanran */
 /**
- * Miinaharava luokasta peli käynnistetään.
+ * Miinaharava luokassa on pelin main metodi.
  * 
  */
 public class MiinaHarava {
