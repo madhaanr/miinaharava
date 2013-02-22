@@ -18,34 +18,45 @@ public class ArvontaTests {
     private int kentanKoko;  
     private Ruutu[][] miinaKentta;   
     private Arvonta arvonta;
+    private int miinoja;
     
     public ArvontaTests() {
     }
     
     @Before
     public void setUp() {
+        miinoja=0;
         kentanKoko=10;
         arvonta = new Arvonta(kentanKoko);
-        miinaKentta = new Ruutu[kentanKoko][kentanKoko];
+//        miinaKentta = new Ruutu[kentanKoko][kentanKoko];
+//        for(int i=0;i<kentanKoko;++i) {
+//            for(int j=0;j<kentanKoko;++j) {
+//                miinaKentta[i][j]=new Ruutu();
+//            }
+//        }
+    }
+    
+    @Test
+    public void miinaArvotaan() {
+        arvonta.miinojenArpoja(miinaKentta);
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
-                miinaKentta[i][j]=new Ruutu();
+                ++miinoja;
             }
         }
     }
-    
-     @Test
-     public void miinaKenttallaOnYlarajaKoko() {  
-         assertNotNull(miinaKentta[9][9]);
-     }
-     @Test
-     public void miinaKenttallaOnAlaRajaKoko() {  
-         assertNotNull(miinaKentta[0][0]);
-     }
-     @Test
-     public void miinojenArpominen() {
-         miinaKentta=arvonta.miinojenArpoja(miinaKentta);
-         assertNotNull(miinaKentta);
-     }
+//    @Test
+//    public void miinaKenttallaOnYlarajaKoko() {  
+//        assertNotNull(miinaKentta[9][9]);
+//    }
+//    @Test
+//    public void miinaKenttallaOnAlaRajaKoko() {  
+//        assertNotNull(miinaKentta[0][0]);
+//    }
+//    @Test
+//    public void miinojenArpominen() {
+//        miinaKentta=arvonta.miinojenArpoja(miinaKentta);
+//        assertNotNull(miinaKentta);
+//    }
     
 }

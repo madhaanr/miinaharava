@@ -73,9 +73,6 @@ public class HiiriKuuntelija implements MouseListener {
             }
         }
         if(SwingUtilities.isLeftMouseButton(e)) {
-            
-            System.out.println(miinaKentta.getKentta().getAvoimiaRuutuja());
-        
             int naapuriRuutujenMiinojenLukumaara = miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara();
             if(naapuriRuutujenMiinojenLukumaara>=9) {
                 tamaNappi.setBackground(Color.red);
@@ -85,8 +82,7 @@ public class HiiriKuuntelija implements MouseListener {
                 timer.stop();
                 gui.repaint();
                 return;
-            }
-           
+            }    
             if(naapuriRuutujenMiinojenLukumaara==0) {
                 JButton[][] miinaNappi = new JButton[miinaKentta.getKentanKoko()][miinaKentta.getKentanKoko()];
                 tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());

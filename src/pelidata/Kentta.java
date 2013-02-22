@@ -28,17 +28,16 @@ public class Kentta {
         else {
             this.kentanKoko=3;
         }
-        this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
+        this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];  
+        this.miinojenLKM=(kentanKoko*kentanKoko)/5;   
+        this.arvonta=new Arvonta(kentanKoko); 
         
-        this.miinojenLKM=(kentanKoko*kentanKoko)/5;
-        
-        arvonta=new Arvonta(kentanKoko); 
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
                 miinaKentta[i][j]=new Ruutu();
             }
         }
-        avoimiaRuutuja=0;       
+        this.avoimiaRuutuja=0;       
     }
     
     /**
@@ -55,15 +54,15 @@ public class Kentta {
             this.kentanKoko=3;
         }
         this.miinaKentta=new Ruutu[this.kentanKoko][this.kentanKoko];
-        this.miinojenLKM=miinojenLukumaara;
+        this.miinojenLKM=miinojenLukumaara;   
+        this.arvonta=new Arvonta(kentanKoko);
         
-        arvonta=new Arvonta(kentanKoko);
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
                 miinaKentta[i][j]=new Ruutu();
             }
         }
-        avoimiaRuutuja=0;
+        this.avoimiaRuutuja=0;
     }
     
     /**

@@ -4,7 +4,8 @@
 21.1.2013 Luokkakaaviosta eka luonnos, lisää luokkia ja pari testiä. 2.5 tuntia.
 22.1.2013 Luokkia muokattu ja luokkakaaviota paranneltu+ keskustelua ohjaajien kanssa. 4 tuntia.
 24.1.2013 Pieni muokkaus ja ohjaus sessio. 2 tuntia.
-26.1.2013 Luokkia poistettu ja luokkia Kentta ja Arvonta muokattu. Peli toimii suppeasti tekstikäyttöliittymän kautta. 4 tuntia. 
+26.1.2013 Luokkia poistettu ja luokkia Kentta ja Arvonta muokattu. 
+Peli toimii suppeasti tekstikäyttöliittymän kautta. 4 tuntia. 
 28.1.2013 Toiminnallisuutta lisätty. Koodia refactoroitu. 3.5 tuntia.
 29.1.2013 Testejä lisätty. 3 tuntia.
 05.2.2013 Javadoc aloitettu. Aihemäärittelyä täsmennetty. Pelilogiikka lisätty. 4 tuntia.
@@ -16,4 +17,5 @@
 19.2.2013 Graafisenkäyttöliittymän tekoa, erityisesti ikkunan tekoa(JPanel). 8.5 tuntia.
 20.2.2013 GUI actionlistener, mouselistener. 9.5 tuntia.
 21.2.2013 GUIn tekoa, Demo. 6 tuntia.
-22.2.2013 Ohjelman viimeistely, luokkakaavio, sekvenssikaavio, lisää testejä. 
+22.2.2013 Ohjelman viimeistely, luokkakaavio, sekvenssikaavio, lisää testejä. 7 tuntia. 
+          Yhteensä projektiin käytetty aikaa noin 80 tuntia.

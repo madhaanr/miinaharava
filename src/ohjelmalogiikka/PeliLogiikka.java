@@ -66,7 +66,6 @@ public class PeliLogiikka {
             kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
                     
             int laskuri=0;
-            System.out.println(laskuri+"::::::");
             for(int i=0;i<kentanKoko;++i) {
                 for(int j=0;j<kentanKoko;++j) {
                     if(kentta.getMiinaKentta()[i][j].isAuki()) {
@@ -74,7 +73,6 @@ public class PeliLogiikka {
                     }
                 }
             }
-            System.out.println(laskuri+";;;;;;");
             kentta.setAvoimiaRuutuja(laskuri);
             return false;
         }
@@ -143,6 +141,5 @@ public class PeliLogiikka {
                 avaaMiinaKenttaa((koordinaattiX+i),(koordinaattiY+j));
             }
         }
-    }
-    
+    }  
 }

@@ -1,12 +1,20 @@
 Ohjelmistoprojektin aihemäärittely
 
-Aiheena on peli nimeltä miinaharava.
-
-Käyttäjät: yksi pelaaja
+Projektin aiheena on peli nimeltä miinaharava.
+Peliä voi pelata yksi pelaaja kerrallaan.
 
 Pelinkulku
 
-Pelin alussa peli arpoo tietyn määrän miinoja peli kentälle ja näyttää 
-pelikentän ruutuina, joita pelaaja klikkailee ja jokaisen klikkauksen jälkeen 
-peli tarkastaa osuttiinko miinaan vai ei. Peli myös ilmoittaa numeroilla 
-kuinka monta miinaa viereisissä ruuduissa on.
+Pelin alussa ohjelma arpoo tietyn määrän miinoja pelikentälle ja näyttää 
+pelikentän ruutuina sekä tiedon siitä miten monta merkitsemätöntä miinaa 
+pelikentällä on. 
+
+Pelaaja yrittää ruutuja hiiren vasemmalla näppäimellä avaamalla saada koko 
+pelikentän avattua mahdollisimman lyhyessä ajassa. Tässä hänellä on apuna 
+pelin tulostama tieto siitä miten monessa avatun ruudun naapuri ruudussa 
+on miina. Lisäksi pelaaja voi merkitä ruudut joissa olettaa olevan miinan 
+painamalla hiiren oikeaa näppäintä.
+
+Jos pelaaja avaa ruudun jossa on miina niin peli päättyy pelaajan häviöön. 
+Jos pelaaja saa kaikki ruudut joissa ei ole miinaa avattua niin peli päättyy 
+pelaajan voittoon.
