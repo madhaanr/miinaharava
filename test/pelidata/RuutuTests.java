@@ -32,7 +32,7 @@ public class RuutuTests {
     }
     @Test
     public void konstruktoriLuoRuudunOikeinnaapuriMiinojenLKM() {
-        assertTrue(ruutu.getNaapuriRuutujenMiinojenLukumaara()==0);
+        assertTrue(ruutu.getMiinaLahiRuudussa()==0);
     }
     @Test
     public void konstruktoriLuoRuudunOikeinisMerkattu() {
@@ -50,13 +50,13 @@ public class RuutuTests {
     }
     @Test
     public void naapuriMiinojenLKMkuusi() {
-        ruutu.setNaapuriRuutujenMiinojenLukumaara(6);
-        assertEquals(6,ruutu.getNaapuriRuutujenMiinojenLukumaara());
+        ruutu.setMiinaLahiRuudussa(6);
+        assertEquals(6,ruutu.getMiinaLahiRuudussa());
     }
     @Test
     public void naapuriMiinojenLKMyhdeksan() {
-        ruutu.setNaapuriRuutujenMiinojenLukumaara(9);
-        assertEquals(9,ruutu.getNaapuriRuutujenMiinojenLukumaara());
+        ruutu.setMiinaLahiRuudussa(9);
+        assertEquals(9,ruutu.getMiinaLahiRuudussa());
     }
             
 }

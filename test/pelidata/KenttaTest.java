@@ -15,7 +15,6 @@ import org.junit.Test;
 public class KenttaTest {
 
     private Kentta miinaKentta;
-    private int miinojenLKM;
     
     public KenttaTest() {
     }
@@ -23,7 +22,6 @@ public class KenttaTest {
     @Before
     public void setUp() {
         miinaKentta = new Kentta(15);
-        miinojenLKM = 15;
     }
     @Test
     public void avoimiaRuutuja() {
@@ -38,6 +36,5 @@ public class KenttaTest {
     public void konstruktoriEiAsetaLiianPientaKenttaa() {
         Kentta miinaKentta3= new Kentta(2);
         assertEquals("kentanKoko: 3", miinaKentta3.toString());
-    }
-   
+    }  
 }

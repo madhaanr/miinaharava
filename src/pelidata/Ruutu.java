@@ -8,21 +8,21 @@ package pelidata;
 public class Ruutu {
     private boolean miina;
     private boolean auki;
-    private int naapuriRuutujenMiinojenLukumaara;
+    private int miinaLahiRuudussa;
     private boolean merkattu;
    
 /**
  * Konstruktori luo Ruudun ja asettaa sen metodien alkuarvot.
  * @param miina alkuarvo on false. Jos ruutuun arvotaan miina niin vaihdetaan trueksi.
  * @param auki Alkuarvo on false. Jos ruutu avataan niin vaihdetaan trueksi.
- * @param naapuriRuutujenMiinojenLukumaara Kertoo kuinka monessa ruudun naapuri
- * @param merkattu Jos on merkattu mahdollinen miinan paikka
+ * @param miinaLahiRuudussa Kertoo kuinka monessa ruudun naapuri ruudussa on miina
+ * @param merkattu Pelaaja on merkannut ruudussa mahdolliseksi miinan paikaksi.
  * ruudussa on miinoja. Maksimi on 8 ja yhdeksän kertoo että tässä ruudussa on miina.
  */
     public Ruutu() {
         this.miina=false;
         this.auki=false;
-        this.naapuriRuutujenMiinojenLukumaara=0;
+        this.miinaLahiRuudussa=0;
         this.merkattu=false;
     }
 
@@ -42,12 +42,12 @@ public class Ruutu {
         this.miina = miina;
     }
 
-    public int getNaapuriRuutujenMiinojenLukumaara() {
-        return naapuriRuutujenMiinojenLukumaara;
+    public int getMiinaLahiRuudussa() {
+        return miinaLahiRuudussa;
     }
 
-    public void setNaapuriRuutujenMiinojenLukumaara(int naapuriRuutujenMiinojenLukumaara) {
-        this.naapuriRuutujenMiinojenLukumaara += naapuriRuutujenMiinojenLukumaara;
+    public void setMiinaLahiRuudussa(int miinaLahiRuudussa) {
+        this.miinaLahiRuudussa += miinaLahiRuudussa;
     }
 
     public boolean isAuki() {
@@ -59,15 +59,6 @@ public class Ruutu {
     }
    
     public String toString() {
-        return ":"+isAuki()+" : "+naapuriRuutujenMiinojenLukumaara+":";
+        return ":"+isAuki()+" : "+miinaLahiRuudussa+":";
     }
-
-//    public String toString() {
-//        if(isMiina()==false) {
-//            return ""+naapuriRuutujenMiinojenLukumaara;
-//        }
-//        else {
-//            return ""+9;
-//        }
-//    }
 }

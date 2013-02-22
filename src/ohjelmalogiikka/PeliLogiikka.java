@@ -27,6 +27,7 @@ public class PeliLogiikka {
     }
     /**
      * Metodi tulostaa miinakentän tekstikäyttöliittymälle.
+     * 
      */    
     public void tulostaKentta() {
         for (int i = 0; i < kentta.getKentanKoko(); ++i) {
@@ -34,7 +35,7 @@ public class PeliLogiikka {
                 if (kentta.getMiinaKentta()[i][j].isAuki() == false) {
                     System.out.print("|"+i+" : "+j+ "|");
                 } else {
-                    System.out.print("|  "+kentta.getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara()+"  |");
+                    System.out.print("|  "+kentta.getMiinaKentta()[i][j].getMiinaLahiRuudussa()+"  |");
                 }
             }
             System.out.println("");
@@ -49,22 +50,20 @@ public class PeliLogiikka {
      */
     public boolean onkoMiina(int koordinaattiX, int koordinaattiY) {
         //tekstiliittymän juttuja kommentoitu pois.
-        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki() == true) {
-//            System.out.println("Ruutu on jo auki! Anna uudet koordinaatit.");
-            return false;
-        }
-        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isMiina() == true) {
-//            System.out.println("Osuit miinaan! Peli Ohi!");
-            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
-            return true;
-        } 
-        else {
+//        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki() == true) {
+////            System.out.println("Ruutu on jo auki! Anna uudet koordinaatit.");
+//            return false;
+//        }
+//        if (kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isMiina() == true) {
+////            System.out.println("Osuit miinaan! Peli Ohi!");
+//            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
+//            return true;
+//        } 
+//        else {
 //            System.out.println("Ei osunut");   
-            
+           
             avaaMiinaKenttaa(koordinaattiX,koordinaattiY);
-
-            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
-                    
+            kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);        
             int laskuri=0;
             for(int i=0;i<kentanKoko;++i) {
                 for(int j=0;j<kentanKoko;++j) {
@@ -75,7 +74,7 @@ public class PeliLogiikka {
             }
             kentta.setAvoimiaRuutuja(laskuri);
             return false;
-        }
+//        }
     }
 
 /**
@@ -87,30 +86,30 @@ public class PeliLogiikka {
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
                 if(kentta.getMiinaKentta()[i][j].isMiina()) {
-                    kentta.getMiinaKentta()[i][j].setNaapuriRuutujenMiinojenLukumaara(9);
+                    kentta.getMiinaKentta()[i][j].setMiinaLahiRuudussa(9);
                     if(i-1>=0&&j-1>=0) {
-                        kentta.getMiinaKentta()[i-1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
+                        kentta.getMiinaKentta()[i-1][j-1].setMiinaLahiRuudussa(1);
                     }
                     if(i-1>=0) {
-                        kentta.getMiinaKentta()[i-1][j].setNaapuriRuutujenMiinojenLukumaara(1);
+                        kentta.getMiinaKentta()[i-1][j].setMiinaLahiRuudussa(1);
                     }
                     if(i-1>=0&&j+1<kentanKoko) {
-                        kentta.getMiinaKentta()[i-1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
+                        kentta.getMiinaKentta()[i-1][j+1].setMiinaLahiRuudussa(1);
                     }
                     if(j-1>=0) {
-                        kentta.getMiinaKentta()[i][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
+                        kentta.getMiinaKentta()[i][j-1].setMiinaLahiRuudussa(1);
                     }
                     if(j+1<kentanKoko) {
-                        kentta.getMiinaKentta()[i][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
+                        kentta.getMiinaKentta()[i][j+1].setMiinaLahiRuudussa(1);
                     }
                     if(i+1<kentanKoko&&j-1>=0) {
-                        kentta.getMiinaKentta()[i+1][j-1].setNaapuriRuutujenMiinojenLukumaara(1);
+                        kentta.getMiinaKentta()[i+1][j-1].setMiinaLahiRuudussa(1);
                     }
                     if(i+1<kentanKoko) {
-                        kentta.getMiinaKentta()[i+1][j].setNaapuriRuutujenMiinojenLukumaara(1);
+                        kentta.getMiinaKentta()[i+1][j].setMiinaLahiRuudussa(1);
                     }
                     if(i+1<kentanKoko&&j+1<kentanKoko) {
-                        kentta.getMiinaKentta()[i+1][j+1].setNaapuriRuutujenMiinojenLukumaara(1);
+                        kentta.getMiinaKentta()[i+1][j+1].setMiinaLahiRuudussa(1);
                     }              
                 }
             }
@@ -118,7 +117,8 @@ public class PeliLogiikka {
     }
     
 /**
- * Metodi avaa lisää pelikenttää näkyville jos metodi getNaapuriRuutujenMiinojenLukumaara 
+ * Rekursiivinen metodi joka avaa lisää pelikenttää näkyville jos 
+ * klikatun ruudun naapurimiinojen lukumäärä on 0.
  * palauttaa arvon 0.
  * @param koordinaattiX 
  * @param koordinaattiY 
@@ -131,9 +131,8 @@ public class PeliLogiikka {
         if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].isAuki()) {
             return;
         } 
-        kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);   
-       
-        if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara()!=0) {
+        kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);         
+        if(kentta.getMiinaKentta()[koordinaattiX][koordinaattiY].getMiinaLahiRuudussa()!=0) {
             return;
         }                 
         for(int i=-1;i<2;++i) {

@@ -28,35 +28,55 @@ public class ArvontaTests {
         miinoja=0;
         kentanKoko=10;
         arvonta = new Arvonta(kentanKoko);
-//        miinaKentta = new Ruutu[kentanKoko][kentanKoko];
-//        for(int i=0;i<kentanKoko;++i) {
-//            for(int j=0;j<kentanKoko;++j) {
-//                miinaKentta[i][j]=new Ruutu();
-//            }
-//        }
+        miinaKentta = new Ruutu[kentanKoko][kentanKoko];
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                miinaKentta[i][j]=new Ruutu();
+            }
+        }
     }
     
     @Test
     public void miinaArvotaan() {
-        arvonta.miinojenArpoja(miinaKentta);
+        miinaKentta=arvonta.miinojenArpoja(miinaKentta);
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
-                ++miinoja;
+                if(miinaKentta[i][j].isMiina()) {
+                    ++miinoja;
+                }
             }
         }
+        assertEquals(1,miinoja);
     }
-//    @Test
-//    public void miinaKenttallaOnYlarajaKoko() {  
-//        assertNotNull(miinaKentta[9][9]);
-//    }
-//    @Test
-//    public void miinaKenttallaOnAlaRajaKoko() {  
-//        assertNotNull(miinaKentta[0][0]);
-//    }
-//    @Test
-//    public void miinojenArpominen() {
-//        miinaKentta=arvonta.miinojenArpoja(miinaKentta);
-//        assertNotNull(miinaKentta);
-//    }
-    
+    @Test
+    public void useitaMiinojaArvotaan() {
+        miinaKentta=arvonta.miinojenArpoja(miinaKentta);
+        miinaKentta=arvonta.miinojenArpoja(miinaKentta);
+        miinaKentta=arvonta.miinojenArpoja(miinaKentta);
+        miinaKentta=arvonta.miinojenArpoja(miinaKentta);
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                if(miinaKentta[i][j].isMiina()) {
+                    ++miinoja;
+                }
+            }
+        }
+        assertEquals(4,miinoja);
+    }
+    @Test
+    public void kenttaArvotaanTayteen() {
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                 miinaKentta=arvonta.miinojenArpoja(miinaKentta);      
+            }
+        }  
+        for(int i=0;i<kentanKoko;++i) {
+            for(int j=0;j<kentanKoko;++j) {
+                if(miinaKentta[i][j].isMiina()) {
+                    ++miinoja;
+                }
+            }
+        }
+        assertEquals(100,miinoja);
+    }
 }

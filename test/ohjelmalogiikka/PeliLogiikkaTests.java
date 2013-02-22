@@ -4,9 +4,9 @@
  */
 package ohjelmalogiikka;
 
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -17,8 +17,7 @@ public class PeliLogiikkaTests {
     private PeliLogiikka miinaKentta; 
     private int kentanKoko=10;
     
-    public PeliLogiikkaTests() {
-        
+    public PeliLogiikkaTests() {    
     }
     
     @Before
@@ -31,7 +30,7 @@ public class PeliLogiikkaTests {
         miinaKentta.miinojaLahella();
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
-                assertNotNull(miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());        
+                assertNotNull(miinaKentta.getKentta().getMiinaKentta()[i][j].getMiinaLahiRuudussa());        
             }
         }
     }
@@ -67,25 +66,23 @@ public class PeliLogiikkaTests {
         miinaKentta.miinojaLahella();
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
-                if(miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara()==0) {
+                if(miinaKentta.getKentta().getMiinaKentta()[i][j].getMiinaLahiRuudussa()==0) {
                     nollienLkm++;
                 }
             }
         }
         assertTrue(nollienLkm>=0&&nollienLkm<kentanKoko*kentanKoko);
-//        System.out.println(nollienLkm);
     }
     @Test
     public void josOsuiNollaanAvaaPelikenttaaEiAlustettuKentta() {
         int nollienLkm=0;
         for(int i=0;i<kentanKoko;++i) {
             for(int j=0;j<kentanKoko;++j) {
-                if(miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara()==0) {
+                if(miinaKentta.getKentta().getMiinaKentta()[i][j].getMiinaLahiRuudussa()==0) {
                     nollienLkm++;
                 }
             }
         }
         assertTrue(nollienLkm==kentanKoko*kentanKoko);
-//    System.out.println(nollienLkm);
     }
 }

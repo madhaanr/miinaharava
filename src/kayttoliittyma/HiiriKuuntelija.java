@@ -73,7 +73,7 @@ public class HiiriKuuntelija implements MouseListener {
             }
         }
         if(SwingUtilities.isLeftMouseButton(e)) {
-            int naapuriRuutujenMiinojenLukumaara = miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara();
+            int naapuriRuutujenMiinojenLukumaara = miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getMiinaLahiRuudussa();
             if(naapuriRuutujenMiinojenLukumaara>=9) {
                 tamaNappi.setBackground(Color.red);
                 tamaNappi.setForeground(Color.black);
@@ -85,7 +85,7 @@ public class HiiriKuuntelija implements MouseListener {
             }    
             if(naapuriRuutujenMiinojenLukumaara==0) {
                 JButton[][] miinaNappi = new JButton[miinaKentta.getKentanKoko()][miinaKentta.getKentanKoko()];
-                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
+                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getMiinaLahiRuudussa());
                 miinaKentta.onkoMiina(koordinaattiX, koordinaattiY);
                 gui.avaaKenttaaJosNolla(gui.gridBagConstraints);
                 for(int i=0;i<miinaKentta.getKentta().getKentanKoko();++i) {
@@ -94,7 +94,7 @@ public class HiiriKuuntelija implements MouseListener {
                             miinaNappi[i][j]=new JButton();
                             if(miinaKentta.getKentta().getMiinaKentta()[i][j].isAuki()) {
                                 tamaNappi=miinaNappi[i][j];
-                                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());  
+                                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getMiinaLahiRuudussa());  
                             }
                         }
                     }
@@ -103,12 +103,12 @@ public class HiiriKuuntelija implements MouseListener {
             if(miinaKentta.getKentta().getAvoimiaRuutuja()==80) {
                 gui.peliOhi("Voitit!");
                 timer.stop();
-                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
+                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getMiinaLahiRuudussa());
             }
             else {    
                 miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].setAuki(true);
                 miinaKentta.getKentta().setAvoimiaRuutuja(miinaKentta.getKentta().getAvoimiaRuutuja()+1);
-                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getNaapuriRuutujenMiinojenLukumaara());
+                tamaNappi.setText(""+miinaKentta.getKentta().getMiinaKentta()[koordinaattiX][koordinaattiY].getMiinaLahiRuudussa());
             }             
         }             
         gui.repaint();      

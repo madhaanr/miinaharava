@@ -186,7 +186,7 @@ public class GraafinenKayttoLiittyma extends JFrame implements ActionListener {
                        miinaNapit[i][j].setBorder(null);
                        miinaNapit[i][j].setMargin(new Insets(1,1,1,1));
                        miinaNapit[i][j].setFont(new Font("Times New Roman",Font.PLAIN, 20));
-                       miinaNapit[i][j].setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getNaapuriRuutujenMiinojenLukumaara());  
+                       miinaNapit[i][j].setText(""+miinaKentta.getKentta().getMiinaKentta()[i][j].getMiinaLahiRuudussa());  
                        gridBagConstraints.gridx=0+j;
                    }
                    gridBagConstraints.gridy=0+i; 
